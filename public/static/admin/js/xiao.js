@@ -904,6 +904,7 @@ $(document).on('click','.my-staff-item',function(){
 //获取事务详情
 $(document).on('click','.get-routine-detail',function(){
 	startLoading();
+	$("#publicModal").modal('hide');
 	var url=$(this).attr('url');
 	var target_table=$(this).attr('target_table');
 	var target_id=$(this).attr('target_id');
@@ -920,9 +921,9 @@ $(document).on('click','.get-routine-detail',function(){
 		url:url,
 		data:upObj,
 		success:function(data){
-			$('#untreatedModalDetail').html(data.page);
+			$('#publicModalDetail').html(data.page);
 			endLoading();
-			$("#untreatedModal").modal('show');;
+			$("#publicModal").modal('show');
 		}
 	});
 })
@@ -1341,4 +1342,9 @@ function endLoading(){
 					}
 				}
 			});
-	})
+	});
+	
+//根据进出库记录显示表单详情
+$(document).on('click','.show-table-info',function(){
+	alert();
+})
