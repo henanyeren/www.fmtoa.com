@@ -1,0 +1,10 @@
+<div class="panel panel-success">
+	<div class="panel-heading">
+		<h3 class="panel-title">{$detail.flow_name}</h3>
+	</div>
+	<div id="dutyArea" url="{:url('Duty/getDutyInfoPlug')}">
+		{volist name="detail.dutys" id="vo"}
+		<button class="btn btn-default dutyBtn" duty_btn_index="1" duty_pid=0 id="dutyBtn1">{$vo.duty_name}</button>
+		{/volist}
+	</div>	
+</div>

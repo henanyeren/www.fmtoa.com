@@ -1,0 +1,123 @@
+<div class="panel panel-success">
+	<div id="dutyArea" url="{:url('Duty/getDutyInfoPlug')}">
+		<button class="btn btn-default dutyBtn" duty_btn_index="1" duty_pid=0 id="dutyBtn1">选择部门</button>
+	</div>	
+</div>
+<button class="btn btn-info" id="addDuty" style="margin: 20px 0;">添加新部门</button>
+<button class="btn btn-danger"  id="removeDuty" style="margin: 20px 0; float: right;">移除部门</button>
+<div class="panel panel-success">
+  <!-- Default panel contents -->
+        <div class="row" style="padding: 30px;">
+
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <input type="text" id="flow_name" placeholder="请输入事务名称。。。" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">事务名称</button>
+                    </span>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+</div>
+
+<button class="btn btn-success btn-block" id="addFlow" url="{:url('addhanddle')}">添加事务</button>
+<script>
+	var btnId=2;
+	var duty_btn_index=1;
+	var html='';
+	$(document).on('click','#addDuty',function(){
+		$('#dutyArea').append('<button class="btn btn-default dutyBtn"  duty_pid=0  duty_btn_index='+btnId+' id="dutyBtn'+btnId+'">选择部门</button>');
+		btnId++;
+	});
+	
+	$(document).on('click','.dutyLine',function(){
+		var upObj={};
+		var pid=$(this).attr('pid');
+		upObj['pid']=pid;
+		
+		$.ajax({
+			type:"post",
+			url:$('#dutyArea').attr('url'),
+			data:upObj,
+			success:function(data){
+				if(data.state==1){
+					$('#publicModalDetail').html(data.page);
+					$("#publicModal").modal('show');
+				}else{
+					alert(data.page);
+				}
+			}
+		});
+	});
+	
+	$(document).on('click','.dutyBtn',function(){
+		var upObj={};
+		var pid=$(this).attr('pid');
+		duty_btn_index=$(this).attr('duty_btn_index');
+		upObj['pid']=pid;
+		
+		$.ajax({
+			type:"post",
+			url:$('#dutyArea').attr('url'),
+			data:upObj,
+			success:function(data){
+				if(data.state==1){
+					$('#publicModalDetail').html(data.page);
+					$("#publicModal").modal('show');
+				}else{
+					alert(data.page);
+				}
+			}
+		});
+	});
+	
+	var flowValue='';
+	//提交事务流程
+	$(document).on('click','#addFlow',function(){
+		flowValue='';
+		var inputs=$('#dutyArea .dutyBtn');
+		var mythis=$(this);
+		$.each(inputs,function(index,input){
+			var myval=$(input).attr('duty_pid');
+			flowValue+=','+myval;
+		});
+		
+		
+		var upObj={};
+		var pid=$(this).attr('pid');
+		duty_btn_index=$(this).attr('duty_btn_index');
+		upObj['pid']=pid;
+		upObj['flow_weights']=flowValue;
+		upObj['flow_name']=$('#flow_name').val();
+		$.ajax({
+			type:"post",
+			url:$(mythis).attr('url'),
+			data:upObj,
+			success:function(data){
+				if(data.state==1){
+					$('#publicModalDetail').html(data.page);
+					$("#publicModal").modal('show');
+				}else{
+					alert(data.page);
+				}
+			}
+		});
+	});	
+	
+	//提交部门id至事务流
+	$(document).on('click','.duty-table tbody td button',function(){
+		var id= $(this).parent().parent().attr('pid');
+		$('button[duty_btn_index='+duty_btn_index+']').html($(this).parent().siblings('.duty_name').eq(0).html());
+		//$(this).attr('duty_pid',id);
+		$('button[duty_btn_index='+duty_btn_index+']').attr('duty_pid',id);
+		$("#publicModal").modal('hide');
+		$('button[duty_btn_index='+duty_btn_index+']').addClass('btn-success');
+		return false;
+	});
+	
+	//移除最后一个部门按钮
+	$(document).on('click','#removeDuty',function(){
+		$('#dutyArea button').eq(-1).remove();
+	})
+	
+</script>

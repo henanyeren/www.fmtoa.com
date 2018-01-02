@@ -1,0 +1,23 @@
+<div class="panel panel-success">
+  <!-- Default panel contents -->
+  <div class="panel-heading">部门</div>
+	
+	<table class="table table-hover duty-table">
+		<thead>
+			<tr>
+				<th>部门ID</th>
+				<th>部门名称</th>
+				<th>部门职责</th>
+			</tr>
+		</thead>
+		<tbody>
+			{volist name="list" id="vo"}
+			<tr class="dutyBtn" pid="$vo.duty_id">
+				<td>{$vo.duty_id}</td>
+				<td>{$vo.duty_name}</td>
+				<td>{$vo.duty_duty}</td>
+			</tr>
+			{/volist}
+		</tbody>
+	</table>
+</div>

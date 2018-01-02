@@ -1,0 +1,29 @@
+<form role="form"  class="my-row" check="{:url('checkAjax')}" action="{:url('generatehanddle')}" jumpUrl="{:url('query')}">
+
+    <div class="form-group my-over-hidden" >
+        <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+            <span class="input-group-addon">账单起始时间</span>
+            <input type="datetime-local" class="form-control check up" name="time" placeholder="点击输入。。。" >
+            <span class="input-group-addon"><i class="glyphicon" ></i></span>
+        </div>
+    </div>
+    <div class="form-group my-over-hidden" >
+        <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+            <span class="input-group-addon">账单结束时间</span>
+            <input type="datetime-local" class="form-control check up" name="times" placeholder="点击输入。。。" >
+            <span class="input-group-addon"><i class="glyphicon" ></i></span>
+        </div>
+    </div>
+    <div class="form-group my-over-hidden" >
+        <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+            <span class="input-group-addon">备注</span>
+            <input type="text" class="form-control check up" name="monthly_remark" placeholder="点击输入。。。" >
+            <span class="input-group-addon"><i class="glyphicon" ></i></span>
+        </div>
+    </div>
+    <div class="form-group my-over-hidden" >
+        <div class="col-lg-push-4 col-md-push-4 col-lg-4 col-md-4 ">
+            <span   class="btn btn-success btn-block btn-submit" class="up-info">生成账单 </span>
+        </div>
+    </div>
+</form>

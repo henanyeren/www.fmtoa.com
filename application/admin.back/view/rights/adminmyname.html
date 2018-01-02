@@ -1,0 +1,20 @@
+<div class="form-group" id="myname" >
+    <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+        <div class="dropdown my-drop">
+            <button type="button" class="btn dropdown-toggle btn-block drop-btn-admins" id="dropdownMenu" data-toggle="dropdown">
+                账号归属人
+                <span class="caret"></span>
+            </button>
+
+            <input type="hidden" class="drop-val-admins up-input" name="admin_staff_pid" value="0" />
+            <input type="hidden" class="drop-val-admin_alias up-input" name="alias" value="0" />
+            <ul class="dropdown-menu drop-ul-admins" role="menu" aria-labelledby="dropdownMenu1">
+                {volist name="mydate" id="vo"}
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" myid="{$vo.staff_id}"   id="{$vo.staff_duty_super_id}"href="#">{$vo.staff_name}</a>
+                </li>
+                {/volist}
+            </ul>
+        </div>
+    </div>
+</div>

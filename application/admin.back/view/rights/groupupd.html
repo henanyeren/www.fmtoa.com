@@ -1,0 +1,62 @@
+			<div id="content" class="col-lg-11 col-md-10 col-sm-10 my-container">
+
+
+				<form role="form"  class="my-row" check="{:url('checkAjax')}" action="{:url('groupupdhanddle')}" jumpUrl="{:url('grouplist')}">
+					<input type="hidden" name="id" id="id" value="{$group_find.id}" />
+				  <div class="form-group my-over-hidden" >
+					       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+							  <span class="input-group-addon">规则名称</span>
+							  <input type="text" class="form-control" name="title" value="{$group_find.title}" >
+							  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+							</div>
+				  </div>
+				
+				  <div class="form-group my-over-hidden" >
+						       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+						       	
+						       	{volist name="rule_in" id="vo"}
+						       		<input type="checkbox" id="{$vo.id}" pid="{$vo.pid}" name="rules" value="{$vo.id}"
+						       			{in name="$vo.id" value="$group_find.rules"}
+						       				checked="checked"
+						       			{/in}
+						       			 />{$vo.str}{$vo.title}<br />
+						       	{/volist}
+						       	
+							 </div>
+				  </div>
+				  
+				
+				  <div class="form-group my-over-hidden" >
+					  			<div class="col-lg-push-4 col-md-push-4 col-lg-4 col-md-4 ">
+							  	<span   class="btn btn-success btn-block btn-check-submit" class="up-info">提交 </span>
+							  	
+				</div>
+				  </div>
+				  
+				</form>
+
+
+		
+			</div>
+<script>
+	$('.my-row input[type=checkbox]').click(function(){
+		var inputs=$('.my-row input[type=checkbox]');
+		var nowId=$(this).attr('id');
+		
+		if($(this).attr('checked')){
+			$(this).attr('checked',false)
+			$.each(inputs, function(index,input) {
+				if(nowId==$(input).attr('pid')){
+					$('#'+$(input).attr('id')).attr('checked',false);
+				}
+			});				
+		}else{
+			$(this).attr('checked',true);
+			$.each(inputs, function(index,input) {
+				if(nowId==$(input).attr('pid')){
+					$('#'+$(input).attr('id')).attr('checked',true);
+				}
+			});	
+		}
+	})
+</script>

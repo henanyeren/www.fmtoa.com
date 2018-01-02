@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{ padding:0; margin:0;}
+body{padding:0; margin:0;font-family: "microsoft yahei";}
+img{ border:none;}
+ul,li{ list-style:none;}
+.left{ float:left; display:inline;}
+.right{ float:right; display:inline;}
+.wlqg{ width:40%; margin:0 auto;}
+table{border-collapse:collapse;}
+.clear {zoom:1;}
+.clear:after {content:'';display:block;clear:both;height:0px;}
+.ddtop{}
+.wlqg table {width:100%; border:1px solid #999; border-collapse:collapse; line-height:30px; margin:12px auto; word-break:break-all;}
+.wlqg table td {border:1px solid #999; border-collapse:collapse; padding:5px; color:#333; text-align:center;}
+.wlqg table td input[type="text"]{ width:100%; border:none; outline:none; text-align:left; font-size:14px;}
+.wlqg table td textarea{ width:100%; min-height:100px; border:none; outline:none; text-align:left; font-size:14px;}
+.tabtit{height:50px; line-height:50px; margin-bottom:15px; position:relative;}
+.tabtit{font-size:30px; letter-spacing:2px; font-weight:normal; text-align:center;}
+.wlqg table td .add,.wlqg table td .del{ margin:0 5px; cursor:pointer;}
+.bh{ text-align:left; float:right; width:32%; margin-bottom:10px;}
+.qltit{ clear:both; height:25px; padding:0 0 0 12px;}
+.qltit li{ width:50%; float:left; height:25px; line-height:25px;}
+.qltit li label{ float:left;}
+.qltit li span{ width:60%; float:left;}
+.qltit li.right{ float:right;}
+.qltit li.right span{ width:20%;}
+.qltit li.right span:nth-of-type(1){ width:28%;}
+.qltit li.right span input{ text-align:center!important;}
+.qltit li span input[type="text"],.qltit2 li span input[type="text"]{ width:100%; border:none;  outline:none; text-align:left; height:25px; line-height:25px; font-size:14px;}
+</style>
+</head>
+
+<body>
+<div class="wlqg">
+  <h1 class="tabtit">付款审批单</h1>
+  <ul class="qltit">
+   <li><label>编号：</label><span><input name="" type="text" /></span></li>    
+    <li class="right"><label>日期：</label><span>{$data.payment_time|date="Y年m月d日",###}</span></li>
+   </ul>
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="14%">申请部门</td>
+    <td><input name="" value="{$data.payment_duty}" type="text" /></td>
+    <td>经办人</td>
+    <td colspan="2"><input name="" value="{$data.alias}" type="text" /></td>
+  </tr>
+  <tr>
+    <td>收款单位</td>
+    <td colspan="2"><input name="" value="{$data.payment_receivables}" type="text" /></td>
+    <td>合同编号</td>
+    <td><input name="" value="{$data.payment_contract}" type="text" /></td>
+  </tr>
+  <tr>
+    <td>申请内容</td>
+    <td colspan="4"><textarea name=""  cols="" rows="">{$data.payment_reason}</textarea></td>
+  </tr>
+  <tr>
+    <td>付款金额</td>
+    <td colspan="4">{$data.payment_moneys}（¥：<span><input name="" type="text" value="{$data.payment_money}" style="width:30%;"></span>）</td>
+  </tr>
+  <tr>
+    <td>付款比例</td>
+    <td><input name="" value="{$data.payment_proportion}" type="text" /></td>
+	<td>合同应付比例</td>
+	<td colspan="2"><input name="" value="{$data.payment_actual_proportion}" type="text" /></td>
+  </tr>
+  <tr>
+    <td>主管经理意见</td>
+    <td colspan="4"><input name="" type="text" /></td>
+  </tr>
+  <tr>
+    <td>预算审核</td>
+    <td colspan="4"><input name="" type="text" /></td>
+  </tr>
+  <tr>
+    <td>主管副总批示</td>
+    <td colspan="4"><input name="" type="text" /></td>
+  </tr>
+  <tr>
+    <td>财务审核</td>
+    <td colspan="4"><input name="" type="text" /></td>
+  </tr>
+  <tr>
+    <td>总经理审批</td>
+    <td colspan="4"><input name="" type="text" /></td>
+  </tr>
+  <tr>
+    <td>董事长审批</td>
+    <td colspan="4"><input name="" type="text" /></td>
+  </tr>
+  <tr>
+    <td>备注</td>
+    <td colspan="4"><textarea name="" cols="" rows=""></textarea></td>
+  </tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<div class="dropdown Xdrop" style="width: 500px; margin: 20px;">
+    <button type="button" class="btn dropdown-toggle btn-block drop-btn-depot " id="dropdownMenu1" data-toggle="dropdown">
+        所属类别
+        <span class="caret"></span>
+    </button>
+
+    <input type="hidden"  class="drop-val-depot  up" name="meteriel_type_super_id" value="0" />
+    <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
+        {volist name="list" id="vo"}
+                <li role="presentation" class="Xli">
+                    <a role="menuitem"  url="{:url('infinite')}" type_id="{$vo.type_id}" name="type_super_id"  style="padding: 10px 30px;"  href="#">{$vo.type_name}</a>
+                </li>
+        {/volist}
+    </ul>
+</div>

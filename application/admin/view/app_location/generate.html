@@ -1,0 +1,56 @@
+ <div id="N-sign">
+  <div class="form-group my-over-hidden" >
+        <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+            <span class="input-group-addon">签到起始时间</span>
+            <input type="datetime-local" class="form-control check up" name="time" placeholder="点击输入。。。" >
+            <span class="input-group-addon"><i class="glyphicon" ></i></span>
+        </div>
+    </div>
+    <div class="form-group my-over-hidden" >
+        <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+            <span class="input-group-addon">签到结束时间</span>
+            <input type="datetime-local" class="form-control check up" name="times" placeholder="点击输入。。。" >
+            <span class="input-group-addon"><i class="glyphicon" ></i></span>
+        </div>
+    </div>
+
+
+     <div class="form-group" >
+         <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+             <div class="dropdown my-drop">
+                 <button type="button" class="btn dropdown-toggle btn-block drop-btn-2" id="dropdownMenu" data-toggle="dropdown">
+                     未选择人则默认查出所有
+                     <span class="caret"></span>
+                 </button>
+
+                 <input type="hidden" class="drop-val-2 up up-input" name="name" value="" />
+
+                 <ul class="dropdown-menu drop-ul-2" role="menu" aria-labelledby="dropdownMenu1">
+                     {volist name="pid" id="vo"}
+                     <li role="presentation">
+                         <a role="menuitem" tabindex="-1"   id="{$vo.admin_id}"href="#">{$vo.str}{$vo.admin_name}</a>
+                     </li>
+                     {/volist}
+                 </ul>
+             </div>
+         </div>
+     </div>
+     <script>
+         //下拉获取值
+         $(document).on('click','.drop-ul-2 li a',function(){
+             $(".drop-val-2").val($(this).attr('id'));
+             $('.drop-btn-2').text($(this).text());
+
+         })
+     </script>
+
+    <div class="form-group my-over-hidden" >
+        <div class="col-lg-push-4 col-md-push-4 col-lg-4 col-md-4 ">
+            <span   class="btn btn-success btn-block mysign" myurl="{:url('sign')}">查询 </span>
+        </div>
+    </div>
+ </div>
+
+<div id="mysign">
+
+</div>

@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<title>无标题文档</title>
+<style>
+ *{ margin:0; padding:0; color:#666; font-size:13px;}
+ *,*:after,*:before{-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+ body{ font-family:"Microsoft YaHei"; font-size:13px;margin:0;padding:0;color:#666; background:#fff;}
+ div,h1,h2,h3,h4,h5,p,ul,ol,li,dl,dd,dt,img,form,iframe,textarea{margin:0;padding:0;border:0;}
+ ul,ol,li{list-style:none;}
+ form,tr,th,td,input,select{font-size:12px; outline:none;}
+ input,textarea{font-family:"Microsoft YaHei";}/*text and password*/
+ /*link*/
+ a,textarea{text-decoration:none;color:#555;}
+ a:hover,textarea:hover{text-decoration:none;}
+ .clear {zoom:1;}
+ .clear:after {content:'';display:block;clear:both;height:0px;}
+ .left{ float:left; display:inline;} .right{ float:right; display:inline;}
+ .aapbg{ background:url(__ADMIN__/images/appbg.jpg) center no-repeat; background-size: 100% 100%; width:100%; height:100%; position: fixed;}
+ .xzcon{ padding:20px; overflow:hidden;}
+ .xzcon h1{ height:50px; line-height:50px; color:#fff; font-size:24px; text-align:center; margin-top:100px; font-weight:normal;}
+ .xzbtn a{ display:block; background:#fff; color:#ea5b24; border-radius:10px; width:60%; margin:0 auto; height:40px; line-height:40px; font-size:16px; text-align:center; margin-top:30px;}
+ .xzbtn p{ text-align:center; font-size:13px; text-align:center; color:#fff; line-height:30px;}
+ .lsbtn{ background:#ea5b24; position:absolute; right:0px; border-radius:20px 0 0 20px; margin-top:25px;}
+ .lsbtn a{ display:block; text-align:center; color:#fff; line-height:32px; font-size:14px; padding:5px 20px;}
+
+ #shareit{ -webkit-user-select:none; display:none;  position:absolute; width:100%; height:100%; background:rgba(0,0,0,0.85); text-align:center; top:0; left:0; z-index:105;}
+ #shareit .arrow{ width:140px; position:absolute; right:12%; top:2%;}
+ #shareit .arrow2{width:140px; position:absolute; right:20%; bottom:12%; z-index:9;}
+ #shareit .arrow img,#shareit .arrow2 img{ width:100%;}
+ #shareit .step1,#shareit .step2{ margin-top:50%; font-size:16px; color:#ea5b24; padding:0 30px;}
+ #shareit .step2{ margin-top:10%;}
+ .dkfs{ background:#fff; position:absolute; bottom:0; padding:20px; z-index:6;}
+ .dkfs img{ width:100%!important;}
+</style>
+</head>
+<body>
+<div class="aapbg">
+ <div class="xzcon">
+  <h1>FMTAPP下载主界面</h1>
+  <div class="xzbtn">
+   {if condition="$a eq 1"}
+   <a href="{$myapp.app_file}">点击下载FMTAPP</a>
+   {else/}
+   <a href="#" id="share_btn">点击下载FMTAPP</a>
+   <div id="shareit">
+    <p class="arrow"><img src="__ADMIN__/images/share-it.png" alt="" /></p>
+    <p class="step1">第一步：点击更多按钮</p>
+    <p class="step2">第二步：在浏览器打开下载APP</p>
+    <p class="arrow2"><img src="__ADMIN__/images/share-it2.png" alt="" /></p>
+    <p class="dkfs"><img src="__ADMIN__/images/fxfs.png" alt="" /></p>
+   </div>
+   <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
+   <script>
+       //立即分享到微信朋友圈点击事件
+       $("#share_btn").on("click", function() {
+           $("#shareit").show();
+       });
+
+
+       $("#shareit").on("click", function(){
+           $("#shareit").hide();
+       })
+   </script>
+   {/if}
+
+   <p>日期：{$myapp.app_time|date="Y-m-d",###}&nbsp;&nbsp;版本号：{$myapp.app_number}</p>
+  </div>
+  <p class="lsbtn"><a href="{:url('app_log')}">查看历史版本</a></p>
+</div>
+</div>
+</body>
+
+</html>

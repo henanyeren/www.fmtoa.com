@@ -1,0 +1,83 @@
+	<form role="form"  class="my-row-no-check mycheck" check="{:url('upload')}" action="{:url('addhanddle')}" jumpUrl="{:url('lst')}">
+		<caption class="text-primary h4"><span class="glyphicon glyphicon-th "></span> {$tabTitle}</caption>
+		
+		<div class="form-group" >
+			<div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+			{$page}
+			</div>
+		</div>
+		<div class="form-group my-over-hidden" >
+			       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+					  <span class="input-group-addon">名　&nbsp;&nbsp;　 称</span>
+					  <input type="text" class="form-control check up" name="materiel_name" placeholder="点击输入。。。" >
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  </div>
+		  <div class="form-group my-over-hidden" >
+			       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+					  <span class="input-group-addon">规　&nbsp;&nbsp;　 格</span>
+					  <input type="text" class="form-control check up" name="materiel_specifications" placeholder="点击输入。。。" >
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  </div>
+		  <div class="form-group my-over-hidden" >
+			       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+					  <span class="input-group-addon">物 料 编 号</span>
+					  <input type="text" class="form-control check up" name="materiel_no" placeholder="点击输入。。。" >
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  </div>
+		  
+		  
+		  <div class="form-group my-over-hidden" >
+			       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+					  <span class="input-group-addon">单　&nbsp;&nbsp;　 位</span>
+					  <input type="text" class="form-control check up" name="materiel_unit" placeholder="点击输入。。。" >
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  </div>		  
+		  
+		  
+
+
+		  <div class="form-group my-over-hidden" >
+			  			<div class="col-lg-push-4 col-md-push-4 col-lg-4 col-md-4 ">
+					  	<span   class="btn btn-success btn-block btn-submit-no-check" class="up-info">添加物料种类 </span>
+			      </div>
+		  </div>
+		</form>
+
+	<script>
+        //初始化绑定指定的事件
+        $(function(){
+            var inputs=$('.mycheck input.up');
+
+            $.each(inputs, function(index,input) {
+                $(input).blur(function(){
+                    submit[index]=1;
+                    //获取对应的键值
+                    var mykey=$(input).attr('name');
+                    var myjson={[mykey]:$(input).val()};
+                    $.ajax({
+                        type:"post",
+                        data:myjson,
+                        url:$('.mycheck').attr('check'),
+                        success:function(data){
+                            if(data.state==1){
+
+                                $(input).next().children().remove();
+                                $(input).next().html('<i class="glyphicon glyphicon-ok text-success"></i>');
+                                submit[index]=1;
+                            }else{
+                                $(input).next().children().remove();
+                                $(input).next().html('<i class="glyphicon glyphicon-remove text-danger"></i>');
+
+                            }
+                        }
+                    });
+
+                })
+            });
+        })
+	</script>
+

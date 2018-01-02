@@ -1,0 +1,10 @@
+<div id="materiel_data">
+	<ul class="list-group">
+		{volist name="$materiel_data" id="vo"}	
+	  		<li class="list-group-item my-materiel-item" materiel_no="{$vo.materiel_no}" materiel_max="{$vo.materiel_number}" materiel_unit="{$vo.materiel_unit}"  materiel_id="{$vo.materiel_id}">
+	  			{$vo.materiel_name}
+	  		</li>
+	  	{/volist}
+	</ul>
+</div>
+

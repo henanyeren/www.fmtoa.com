@@ -1,0 +1,206 @@
+
+
+	<form role="form"  class="my-row" check="{:url('checkAjax')}" action="{:url('addhanddle')}" jumpUrl="{:url('lst')}">
+		<ul class="nav nav-tabs" id="myTab">
+		  <li class="active"><a href="#t1">基本信息</a></li>
+		  <li><a href="#t2">现病史</a></li>
+		  
+		</ul>
+		<div class="tab-pane active" id="t1">
+			
+			  <div class="form-group my-over-hidden" >
+				       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+						  <span class="input-group-addon">姓名</span>
+						  <input type="text" class="form-control check up" name="staff_name" placeholder="点击输入。。。" >
+						  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+						</div>
+			  </div>
+	
+			  <div class="form-group my-over-hidden" >
+				       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+						  <span class="input-group-addon">性别</span>
+						  <input type="text" class="form-control check up" name="staff_sex" placeholder="点击输入。。。" >
+						  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+						</div>
+			  </div>
+			  
+			  <div class="form-group my-over-hidden" >
+				       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+						  <span class="input-group-addon">年龄</span>
+						  <input type="text" class="form-control check up" name="staff_age" placeholder="点击输入。。。" >
+						  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+						</div>
+			  </div>
+	
+			  <div class="form-group my-over-hidden" >
+				       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+						  <span class="input-group-addon">血型</span>
+						  <input type="text" class="form-control check up" name="staff_bloodiness" placeholder="点击输入。。。" >
+						  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+						</div>
+			  </div>
+	
+			  <div class="form-group my-over-hidden" >
+				       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+						  <span class="input-group-addon">籍贯</span>
+						  <input type="text" class="form-control check up" name="staff_native_place" placeholder="点击输入。。。" >
+						  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+						</div>
+			  </div>
+	
+			  <div class="form-group my-over-hidden" >
+				       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+						  <span class="input-group-addon">民族</span>
+						  <input type="text" class="form-control check up" name="staff_nation" placeholder="点击输入。。。" >
+						  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+						</div>
+			  </div>
+	
+	
+
+	
+			  <div class="form-group my-over-hidden" >
+				       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+						  <span class="input-group-addon">文化程度</span>
+						  <input type="text" class="form-control check up" name="staff_standard_of_culture" placeholder="点击输入。。。" >
+						  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+						</div>
+			  </div>
+	
+	
+			  <div class="form-group my-over-hidden" >
+				       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+						  <span class="input-group-addon">健康状况</span>
+						  <input type="text" class="form-control check up" name="staff_healthy_condition" placeholder="点击输入。。。" >
+						  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+						</div>
+			  </div>
+			  
+	
+			  <div class="form-group my-over-hidden" >
+				       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+						  <span class="input-group-addon">身高</span>
+						  <input type="text" class="form-control check up" name="staff_height" placeholder="点击输入。。。" >
+						  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+						</div>
+			  </div>
+	
+	
+			  <div class="form-group my-over-hidden" >
+				       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+						  <span class="input-group-addon">体重</span>
+						  <input type="text" class="form-control check up" name="staff_weight" placeholder="点击输入。。。" >
+						  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+						</div>
+			  </div>			  
+			  <div class="form-group my-over-hidden" >
+				       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+						  <span class="input-group-addon">婚姻情况</span>
+						  <input type="text" class="form-control check up" name="staff_marital_status" placeholder="点击输入。。。" >
+						  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+						</div>
+			  </div>
+
+		</div>
+
+		<div class="tab-pane active" id="t2">
+			
+				  <div class="form-group pid">
+						       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+				  				<div class="dropdown my-drop">
+								    <button type="button" class="btn dropdown-toggle btn-block drop-btn" id="dropdownMenu1" data-toggle="dropdown">所属分类
+								        <span class="caret"></span>
+								    </button>
+								    
+								    <input type="hidden" class="drop-val up" name="pid" value="0" />
+								    
+								    <ul class="dropdown-menu drop-ul-three" url={:url('add')} role="menu" aria-labelledby="dropdownMenu1" style="width: 100%;">
+								        {volist name="pids" id="vo"}
+								        <li role="presentation"  >
+								            <a role="menuitem" tabindex="-1" id="{$vo.department_id}" href="#">{$vo.department_name}</a>
+								        </li>
+								        {/volist}
+								        
+								    </ul>
+								</div>
+								
+					     </div>
+				  </div>
+				</div>
+				
+		<script id="editorMax" type="text/plain" style="width:100%;height:240px; display: none;"></script>
+						
+				
+		</form>
+
+<script>
+	function setInput(eContent){
+    	$(".tab-content div.tab-pane.active input[type='hidden'].up").val(eContent); 		
+    }
+	
+	function setUe(){
+    	ueMax.setContent($(".tab-content div.tab-pane.active input[type='hidden'].up").val()); 		
+    }
+	
+	var myName="";
+	var ueMax;
+  $(function () {
+  	UE.delEditor('editorMax');
+		ueMax = UE.getEditor('editorMax');
+		ueMax.addListener('blur',function(){
+			setInput(ueMax.getContent());
+		});
+  	
+    $('#myTab a:first').tab('show');
+  })
+  $('#myTab a').click(function (e) {
+	  e.preventDefault();
+	  $(this).tab('show');
+	  
+	  //判断如果是第一tab则隐藏
+	  if($(this).attr('href')=="#t1"){
+	  	$("#editorMax").css({"display":"none"});
+	  }else{
+	  	setUe();
+	  	$("#editorMax").css({"display":"block"});
+	  }
+	  //找到制定Nameinput
+	  
+	   myName=$(this).attr("myName");
+})
+</script>
+
+<script>
+			//初始化绑定指定的事件
+	$(function(){
+			var inputs=$('.my-row input.check');
+
+			$.each(inputs, function(index,input) {
+				$(input).blur(function(){
+					submit[index]=0;
+					//获取对应的键值
+					var mykey=$(input).attr('name');
+					var myjson={[mykey]:$(input).val()};
+					$.ajax({
+						
+						type:"post",
+						data:myjson,
+						url:$('.my-row').attr('check'),
+						success:function(data){
+							if(data.state==1){
+								
+								$(input).next().children().remove();
+								$(input).next().html('<i class="glyphicon glyphicon-ok text-success"></i>');
+								submit[index]=1;
+							}else{
+								$(input).next().children().remove();
+								$(input).next().html('<i class="glyphicon glyphicon-remove text-danger"></i>');
+								
+							}
+						}
+					});
+					
+				})
+			});		
+	})
+	</script>

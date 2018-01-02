@@ -1,0 +1,5 @@
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+  <assemblyIdentity name="9.6.11681.400" version="9.6.11681.400" type="win32"/>
+   <file name="chrome_elf.dll"/>
+   <file name="kasko.dll"/>
+ </assembly>

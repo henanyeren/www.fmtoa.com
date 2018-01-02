@@ -1,0 +1,56 @@
+			<div id="content" class="col-lg-11 col-md-10 col-sm-10 my-container">
+
+				<form role="form"  class="my-row" check="{:url('checkAjax')}" action="{:url('adminupdhanddle')}" jumpUrl="{:url('adminlist')}">
+					<input type="hidden" class="form-control up-input" name="admin_id" value="{$admin_find.admin_id}" >
+
+	
+				     <div class="form-group my-over-hidden" >
+					       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+							  <span class="input-group-addon">管理员名称</span>
+							  <input type="text" class="form-control up-input" name="admin_name" value="{$admin_find.admin_name}" >
+							  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+							</div>
+				  </div>
+				  
+				  <div class="form-group my-over-hidden" >
+					       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+							  <span class="input-group-addon">管理员密码</span>
+							  <input type="text" class="form-control up-input" name="admin_password"  >
+							  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+							</div>
+				  </div>
+				  
+				  <div class="form-group my-over-hidden" >
+					       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+							  <span class="input-group-addon">确认密码</span>
+							  <input type="text" class="form-control up-input" name="admin_password1" placeholder="点击输入。。。" >
+							  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+							</div>
+				  </div>				  
+				
+				  <div class="form-group my-over-hidden" >
+						       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+						       	{volist name="group_select" id="vo"}
+						       		{if condition="$vo.id eq $group_id"}
+						       			<input type="radio" name="group_id"  checked value="{$vo.id}" />{$vo.title}<br />
+						       		{else/}
+						       			<input type="radio" name="group_id"  value="{$vo.id}" />{$vo.title}<br />
+						       		{/if}
+						       			
+						       	{/volist}
+						       	
+							 </div>
+				  </div>
+				  
+				
+				<div class="form-group my-over-hidden" >
+					<div class="col-lg-push-4 col-md-push-4 col-lg-4 col-md-4 ">
+				  	<span   class="btn btn-success btn-block btn-check-radio-submit" class="up-info">提交 </span>
+				</div>
+				  </div>
+				  
+				</form>
+
+				
+		
+			</div>

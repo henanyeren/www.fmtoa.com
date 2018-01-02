@@ -1,0 +1,84 @@
+<style>
+*{ padding:0; margin:0;}
+body{padding:0; margin:0;font-family: "microsoft yahei";}
+img{ border:none;}
+ul,li{ list-style:none;}
+.left{ float:left; display:inline;}
+.right{ float:right; display:inline;}
+.wlqg{ width:1200px; margin:0 auto;}
+table{border-collapse:collapse;}
+.clear {zoom:1;}
+.clear:after {content:'';display:block;clear:both;height:0px;}
+.ddtop{}
+.wlqg table {width:100%; border:1px solid #ddd; border-collapse:collapse; margin:12px auto; word-break:break-all;}
+.wlqg table td {border:1px solid #ddd; border-collapse:collapse; padding:5px; color:#666; text-align:center;}
+.wlqg table td input{ width:100%; border:none; outline:none; text-align:center; font-size:13px;}
+.wlqg h1{ font-size:22px; font-weight:normal; text-align:center; line-height:50px;}
+.wlqg table td .add,.wlqg table td .del{ margin:0 5px; cursor:pointer;}
+.qltit{ clear:both; height:25px;}
+.qltit li{ width:33.33%; float:left; height:25px; line-height:25px;}
+.qltit li label{ float:left;}
+.qltit li span{ width:65%; float:left;}
+.qltit li span input{ width:100%; border:none;  outline:none; text-align:left; height:25px; line-height:25px; font-size:13px;border-bottom:1px solid #ddd!important;}
+.wlqg table thead{ background:#eee;}
+</style>
+	<div role="form"  class="my-row-no-check my-form" check="{:url('checkAjax')}" url="{:url('depotPurchasingRequisitionAddhanddle')}" jumpUrl="{:url('lst')}">
+		<caption class="text-primary h4"><span class="glyphicon glyphicon-th "></span> {$tabTitle}</caption>
+			<div class="wlqg">
+			  <h1>物料请购单</h1>
+			  <ul class="qltit">
+			   
+			   <li><label>申请人：</label><span><input name="" type="text" value="{:session('admin_name')}"  /></span></li> 
+			   <input type="hidden" value="{:session('admin_id')}" name="requisition_from_id" class="main-up" />
+			   <li><label>请购部门：</label><span><input name="" type="text" value="{$departmentName}" /></span></li>
+			   <input type="hidden" value="{:session('admin_duty_superid')}" name="requisition_super_id"  class="main-up" />
+			   
+			   <li><label>日期：</label><span><input  type="datetime-local"   name="requisition_time" class="main-up my-time" /></span></li>
+			   
+			   </ul>
+			  <table>
+			  <thead>
+			   <tr>
+			    <td></td> 
+				<td width="8%"><span class="chasing-add btn btn-success">添加</span></td>
+			    <td>物料名称</td>    
+				<td width="8%">规格</td>   
+				<td width="8%">数量</td>   
+				<td width="8%">单位</td>   
+				<td width="8%">需求日期</td>
+				<td>备注</td>
+				<td width="">提交</td>
+			   </tr>
+			  </thead>
+			  <tbody id="myContent" class="subConten" url="{:url('depotPurchasingRequisitionSubUpload')}">
+			   <tr>
+			    <td>1</td> 
+				<td><span class="chasing-del btn btn-danger">删除</span></td>
+			 	<td><input name="purchasing_name" sub="1" type="text" class="up sub" /></td>    
+					<td><input name="purchasing_specifications" sub="1" class="up sub" type="text" /></td>   
+					<td><input name="purchasing_number" sub="1" class="up sub" type="number" /></td>   
+					<td><input name="purchasing_unit" sub="1" class="up sub" type="text" /></td>   
+					<td><input name="purchasing_date_require" sub="1" class="up sub my-sub-time"  type="datetime-local" /></td>
+					<td><input name="purchasing_remark" sub="1" class="up sub "  type="text" /></td>
+					<td><button class="btn btn-primary add-materuel" sub="1">提交</button></td>
+			   </tr>
+			  </tbody>
+			</table>
+			
+			<!--<ul class="qltit">
+			   <li><label>采购部：</label><span></span></li>
+			   <li><label>部门主管：</label><span></span></li>   
+			   <li><label>常务副总：</label><span></span></li> 
+			</ul>-->
+		</div>		
+	</div>
+
+<button id="submit-all" class="btn btn-success btn-block" url="{:url('depotPurchasingRequisitionAddhanddle')}"  style="margin: 0 auto;">提交申请</button>
+<script>
+	$(function(){
+		outIndex=2;
+		var mycurrentdate=getCurrentTime();
+	    $('.my-time').val(mycurrentdate);
+		$('.my-sub-time').val(mycurrentdate);
+	})
+</script>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html style="height: 100%;"> 
+	
+	{include file="public/header" /}
+	<body style="height: 100%;">
+				<!--
+                	作者：wobuzhidaoweishenme@hotmail.com
+                	时间：2017-07-13
+                	描述：侧面栏目
+                -->
+	<hr />
+	
+	<style type="text/css">
+*{padding:0px;margin:0px;}
+body{font-family:Arial, Helvetica, sans-serif;background:url(images/grass.jpg) no-repeat 50% 0;font-size:12px;}
+img{border:0;}
+.lg{width:468px;height:468px;margin:100px auto;background:url(images/login_bg.png) no-repeat;}
+.lg_top{ height:200px;width:468px;}
+.lg_main{width:400px;height:180px;margin:0 25px;}
+.lg_m_1{width:290px;height:100px;padding:60px 55px 20px 55px;}
+.ur{height:37px;line-height:37px;border:0;color:#666;width:236px;margin:4px 28px;background:url(images/user.png) no-repeat;padding-left:10px;font-size:12px;font-family:Arial, Helvetica, sans-serif;}
+.pw{height:37px;line-height:37px;border:0;color:#666;width:236px;margin:4px 28px;background:url(images/password.png) no-repeat;padding-left:10px;font-size:12px;font-family:Arial, Helvetica, sans-serif;}
+.bn{width:330px;height:72px;background:url(images/enter.png) no-repeat;border:0;display:block;font-size:18px;color:#FFF;font-family:Arial, Helvetica, sans-serif;font-weight:bolder;cursor:pointer;}
+.lg_foot{height:80px;width:330px;padding: 6px 68px 0 68px;}
+</style>
+
+</head>
+
+<body>
+
+<div class="lg">
+<form action="#" method="POST">
+    <div class="lg_top"></div>
+    <div class="lg_main">
+        <div class="lg_m_1">
+        
+        <input name="username" placeholder="用户名" value="" class="ur" />
+        <input name="password" placeholder="密码" type="password" value="" class="pw" />
+        
+        </div>
+    </div>
+    <div class="lg_foot">
+    <input type="submit" value="登录" class="bn" /></div>
+</form>
+</div>
+	
+	
+	<div id="content" class="col-lg-6 col-md-8 col-sm-10 col-lg-push-3 col-md-push-2 col-sm-push-1 col-xs-8 col-xs-push-2">
+		<h2>
+			
+		</h2>
+			    <form class="bs-example bs-example-form" role="form" action="{:url('checklogin')}" method="post">
+			        <div class="row">
+			                <div class="input-group">
+			                    <span class="input-group-btn">
+			                        <button class="btn btn-default"   type="button">用户名</button>
+			                    </span>
+			                    <input type="text" class="form-control" name="admin_name" >
+			                </div><!-- /input-group -->
+			            <br>
+			            	
+			                <div class="input-group">
+			                    <span class="input-group-btn">
+			                        <button class="btn btn-default" name="admin_password" type="button">密 码</button>
+			                    </span>
+			                    <input type="password" class="form-control" name="admin_password" >
+			                </div><!-- /input-group -->
+			                
+			            
+			            
+			          
+			            
+			        </div><!-- /.row -->
+			        <br />
+			        <div class="row">
+			        	  <div class="col-lg-6 col-xs-8 col-xs-push-2">
+			            	
+			                   
+			                     <input type="submit" class="btn btn-primary btn-lg btn-block" value="登陆"/>
+			                
+			            </div><!-- /.col-lg-6 -->			      
+			        </div>
+			        
+			        
+			    </form>
+			
+
+
+
+	</div>
+
+
+
+</body>
+</html>

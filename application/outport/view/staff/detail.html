@@ -1,0 +1,64 @@
+<ul class="list-group">
+	
+	  <li class="list-group-item text-center">
+   	照片：<img src="
+   		{if condition="$detail.staff_pic" }
+   			{$detail.staff_pic}
+   		{else}
+   			
+   			__ADMIN__/images/staff.png
+   		{/if}
+   		" height="100px" />
+  </li>
+	
+  <li class="list-group-item text-center">
+   	姓名：{$detail.staff_name}
+  </li>
+  
+    <li class="list-group-item text-center">
+   	性别：{if condition="$detail.staff_sex"}
+				男
+			{else 	/}
+				女
+			{/if}
+  </li>
+  
+    <li class="list-group-item text-center">
+   	年龄：{$detail.staff_age}
+  </li>
+
+  
+    <li class="list-group-item text-center">
+   	员工编号：{$detail.staff_job_num}
+  </li>
+  
+    <li class="list-group-item text-center">
+   	所属部门：{$detail.staff_department}
+  </li>
+  
+  
+    <li class="list-group-item text-center">
+   	职位描述：{$detail.staff_job_desc}
+  </li>
+  
+
+  
+    <li class="list-group-item text-center">
+   	职称：{$detail.staff_professional_title}
+  </li>
+  
+    <li class="list-group-item text-center">
+   	文化程度：{$detail.staff_standard_of_culture}
+  </li>  
+    
+  
+    <li class="list-group-item text-center">
+   	联系电话：{$detail.staff_tel}
+  </li>  
+  
+  
+    <li class="list-group-item text-center">
+   	员工职务id：{$detail.staff_job_id}
+  </li>  
+    
+</ul>

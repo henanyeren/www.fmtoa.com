@@ -1,0 +1,26 @@
+<ul class="list-group">
+	<li class="list-group-item text-center">
+		报销序号：{$detail.reimbursement_id}
+	</li>
+	<li class="list-group-item text-center">
+		报销人：{$detail.reimbursement_name}
+	</li>
+	<li class="list-group-item text-center">
+		报销金额：{$detail.reimbursement_money}
+	</li>
+	<li class="list-group-item text-center">
+		报销事由：{$detail.reimbursement_reason}
+	</li>
+	<li class="list-group-item text-center">
+		备注：{$detail.reimbursement_remark}
+	</li>
+	<li class="list-group-item text-center">
+		凭证：<img src="{$detail.reimbursement_img}" width="600px"/>
+	</li>
+	<li class="list-group-item text-center">
+		详细信息：{$detail.reimbursement_voucher}
+	</li>
+	<li class="list-group-item text-center">
+		核准人：{$detail.expenses.admin_name}
+	</li>
+</ul>

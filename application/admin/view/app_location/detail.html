@@ -1,0 +1,120 @@
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+        *{ margin:0; padding:0; color:#666; }
+        *,*:after,*:before{-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+        body{ font-family:"Microsoft YaHei"; font-size:13px;margin:0;padding:0;color:#666; background:#fff;}
+        div,h1,h2,h3,h4,h5,p,ul,ol,li,dl,dd,dt,img,form,iframe,textarea{margin:0;padding:0;border:0;}
+        ul,ol,li{list-style:none;}
+        form,tr,th,td,input,select{ outline:none;}
+        input,textarea{font-family:"Microsoft YaHei";}
+        table{border-collapse:collapse;}
+        /*link*/
+        a,textarea{text-decoration:none;color:#555;}
+        a:hover,textarea:hover{text-decoration:none;}
+        .clear {zoom:1;}
+        .clear:after {content:'';display:block;clear:both;height:0px;}
+        .left{ float:left!important;; display:inline;} .right{ float:right!important; display:inline;}
+
+        .tablebox{ width:100%; overflow-x:auto; overflow-y:hidden;}
+        .hwlq,.phxx,.spsq{ width:1000px; height:auto; margin:0 auto;}
+        .phxx h1{ text-align:center; font-size:30px; font-weight:normal; height:50px; line-height:50px; margin-bottom:50px}
+        .phtop,.phbot{ padding:0 20px; font-size:17px;}
+        .phtop .row{ clear:both; overflow:hidden; margin-bottom:10px; height:24px; line-height:24px;}
+        .phtop .row p{ float:left;}
+        .phtop .row .left{ width:55%;}.phtop .row .right{ width:40%;}
+        .phtop .row p input[type="text"],.phtop .row p input[type="number"]{ width:100%; border:none; background:none; line-height:24px; outline:none; font-size:17px;}
+        .phtop .row p label,.phtop .row p span{ float:left}
+        .phtop .row p label{ width:90px;}.phtop .row .left span{ width:320px}
+        .table_nr table{ line-height:24px;}
+        .table_nr table tr td{ padding:8px 5px; font-size:16px; text-align:center; word-break: break-all;}
+        .cdtit{ width:20px; text-align:center;font-size:16px; margin:0 auto;}
+        .table_nr table tr td input[type="text"],.table_nr table tr td input[type="number"],.table_nr table tr td textarea{ width:100%; border:none; background:none; line-height:24px; outline:none; text-align:center; font-size:15px; color:#666;}
+        .phbot p{ width:33.33%; float:left; display:inline; margin-top:10px}
+        .phbot p label,.phbot p span,.yftit label,.yftit span,.sqyy label,.sqyy span{ float:left;}
+        .phbot p textarea{ width:100%; border:none; background:none; line-height:24px; outline:none; text-align:left; font-size:15px; color:#666; width:142px}
+        .yftit .left,.yftit .right{ width:240px;}
+        .hj label,.hj span{ float:left;}
+        .hj span input{ width:350px!important; text-align:left!important;}
+        .sqyy span textarea{ width:900px!important; text-align:left!important;}
+        .yftit input{ text-align:left!important;}
+        .tdtop{ border-top:none;}
+
+
+        .ypsy{ width:1200px; height:auto; margin:0 auto;}
+        .ypsy h1,.hwlq h1,.kqb h1,.spsq h1{text-align:center; font-size:30px; font-weight:normal; height:50px; line-height:50px; margin-bottom:10px;}
+        .kqb{ width:1500px; height:auto; margin:0 auto;}
+    </style>
+</head>
+
+<body>
+<div class="tablebox">
+    <div class="kqb">
+        <h1>河南福妙堂医药科技有限公司员工考勤表({$mysign.0.month}月份)</h1>
+        <div class="table_nr">
+            <table width="100%" border="1">
+                <tr>
+                    <td width="280" rowspan="2">姓名</td>
+                    <td width="100">日期</td>
+                    {volist name="mysign.0.mytime" key="k"  id="day"}
+                    <td width="50">{$k}</td>
+                    {/volist}
+
+                    <td width="300" rowspan="2">应出勤天数</td>
+                    <td width="320" rowspan="2">实际上班天数</td>
+                    <td width="300" rowspan="2">签字</td>
+                </tr>
+                <tr>
+                    <td>星期</td>
+                    {volist name="mysign.0.week" key="k"  id="day"}
+                    <td width="50">{$day}</td>
+                    {/volist}
+
+                </tr>
+                {volist name="mysign" id="myname"}
+                <tr>
+                    <td rowspan="2">{$myname.myname}</td>
+
+                    <td>上午</td>
+                    {volist name="myname.mytime" id="myday"}
+                    {if condition="$myday eq 1"}
+                    <td><input name="" type="text" value="√"></td>
+                    {elseif condition="$myday eq 2"/}
+                    <td><input name="" type="text" value="-"></td>
+                    {else/}
+                    <td><input name="" type="text"></td>
+                    {/if}
+                    {/volist}
+
+                    <td rowspan="2"><input name="" type="text"></td>
+                    <td rowspan="2"><input name="" type="text"></td>
+                    <td rowspan="2"><input name="" type="text"></td>
+                </tr>
+                <tr>
+                    <td>下午</td>
+                    {volist name="myname.mytime" id="myday"}
+                    {if condition="$myday eq 1"}
+                    <td><input name="" type="text" value="√"></td>
+                    {elseif condition="$myday eq 2"/}
+                    <td><input name="" type="text" value="-"></td>
+                    {else/}
+                    <td><input name="" type="text"></td>
+                    {/if}
+                    {/volist}
+
+                </tr>
+            {/volist}
+                    <td colspan="36"><p>注：出勤:√； 事假:〇； 病假:△；迟到（早退）:-；旷工:×；加班:+ ；补休:⊙ ；公休:休 ；婚假:婚 ；丧假:丧 ；产假:产 </p></td>
+                </tr>
+            </table>
+        </div>
+        <!-- table_nr end -->
+    </div>
+</div>
+</body>
+</html>

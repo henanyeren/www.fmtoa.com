@@ -1,0 +1,103 @@
+<style>
+	*{ padding:0; margin:0;}
+	body{padding:0; margin:0;font-family: "microsoft yahei";}
+	img{ border:none;}
+	ul,li{ list-style:none;}
+	.left{ float:left; display:inline;}
+	.right{ float:right; display:inline;}
+	.wlqg{ width:1200px; margin:0 auto;}
+	table{border-collapse:collapse;}
+	.clear {zoom:1;}
+	.clear:after {content:'';display:block;clear:both;height:0px;}
+	.ddtop{}
+	.wlqg table {width:100%; border:1px solid #ddd; border-collapse:collapse; margin:12px auto; word-break:break-all;}
+	.wlqg table td {border:1px solid #ddd; border-collapse:collapse; padding:5px; color:#666; text-align:center;}
+	.wlqg table td input{ width:100%; border:none; outline:none; text-align:center; font-size:13px;}
+	.wlqg h1{ font-size:22px; font-weight:normal; text-align:center; line-height:50px;}
+	.wlqg table td .add,.wlqg table td .del{ margin:0 5px; cursor:pointer;}
+	.qltit{ clear:both; height:25px;}
+	.qltit li{ width:33.33%; float:left; height:25px; line-height:25px;}
+	.qltit li label{ float:left;}
+	.qltit li span{ width:65%; float:left;}
+	.qltit li span input{ width:100%; border:none;  outline:none; text-align:left; height:25px; line-height:25px; font-size:13px;border-bottom:1px solid #ddd!important;}
+	.wlqg table thead{ background:#eee;}
+</style>
+
+<div class="wlqg" class="my-form " >
+	<div class="X-form-ajax-check" check="{:url('ajaxCheck')}"></div>
+  <h1>生产领料出库</h1>
+  <ul class="qltit">
+  	<li><label>发放人：</label><span><input  url="{:url('staff/getStaffs')}" department_type_id=2  class="staff demander_name2" type="text" /></span></li>
+  	 <input type="hidden" name="materiel_lssuer" class="main-up demander_id demander_id2 check" />
+   <li style="float:right;"><label>日期：</label><span><input  type="datetime-local"   name="materiel_add_time" class="main-up my-time check" /></span></li>
+   </ul>
+  <table>
+	  <thead> 
+	   <tr>
+	    <td></td> 
+		<td width="8%"><span class="materiel-add btn btn-success">添加</span></td>
+		<td width="14%">名称</td>
+		<td width="14%">生产批号</td>
+	    <td width="14%">编号</td>    
+		<td width="8%">数量</td>   
+		<td width="8%">单价</td> 
+		<td width="8%">金额</td>  
+		<td>备注</td>
+		<td width="5%">操作</td>
+	   </tr>
+	  </thead>
+	  <tbody id="myContent" class="subConten " url="{:url('pressSubAddhandle')}" sub-from-url="{:url('DepotMateriels/infinite')}">
+		   <tr>
+		    <td>1</td> 
+			<td><button class="chasing-del btn btn-danger">删除</button></td>
+			<input type="hidden" name="materiel_pid"  sub="1" class="up sub materiel_id1" materiel_id="1" value="1" />
+			<td>
+				<div class="dropdown">
+				  <button class="btn btn-default my-dropdown drop-num1" type="button" materiel_page_id="1">
+				    	选择
+				    <span class="caret"></span>
+				  </button>
+				</div>
+			</td>
+		 	<td><input name="materiel_batch_number" sub="1" type="text" placeholder="输入生产批号" class="up sub materiel_batch_number1 check" /></td>
+		 	<td><input name="materiel_no" sub="1" placeholder="输入编号" class="up sub check materiel_no1" type="text" /></td>
+			<td><input name="materiel_number" sub="1" placeholder="0.00" class="up sub materiel_number1 check" type="number" /></td>  
+			
+			<td><input name="materiel_univalent" sub="1" placeholder="0.00" class="up sub materiel_univalent1 check" value="请输入单价"  type="number" /></td>
+			<td><input name="material_total_money" sub="1" placeholder="0.00" class="up sub material_total_money1 check"   type="number" /></td>
+			<td><input name="materiel_remark" sub="1" class="up sub check" placeholder="填写备注"  type="text" /></td>
+			
+			<td><button class="btn btn-primary add-materuel" sub="1" >提交</button></td>
+		   </tr>
+	
+	
+	  </tbody>
+	</table>
+	<ul class="qltit">
+		   <!--<li><label>采购部经理：</label><span><input name="" type="text" /></span></li>   <--></-->
+	   <input type="hidden" name="materiel_demander_id" class="main-up demander_id demander_id1 check"  />
+	   <li><label>领料人：</label><span><input  url="{:url('staff/getStaffs')}" department_type_id=1  class="staff demander_name1"  type="text" /></span></li>
+	   
+
+	   <li><label>检验员：</label><span><input  url="{:url('staff/getStaffs')}" department_type_id=2 type="text" /></span></li>
+	   <input type="hidden" name="materiel_godown_keeper" value="{:session('admin_id')}" class="main-up check" />
+	   <li style="float: right;"><label>仓管员：</label><span><input name="" type="text" value="{:session('admin_name')}" /></span></li>
+	</ul>
+	<input type="hidden" name="materiel_type" value=5 class="main-up check" />
+	<input type="hidden" name="materiel_remark" id="public_remark_input" class="main-up check"  />
+	
+	<button class="btn btn-block add-main-remark"  sub="1" ><span class="fa fa-edit"></span> 添加备注</button>
+   <button class="btn btn-success btn-block" url="{:url('OutAddhandle')}"   id="submit-all">提交表格</button>
+</div>
+
+
+<script>
+	//初始化添加页面的index值
+	outIndex=2;
+	var mytime=getCurrentTime();
+	$('.my-time').val(mytime);
+	var bIds='';
+	//X_form_ajax_check();
+	
+	//alert($('#my-form1').attr('url'));
+</script>

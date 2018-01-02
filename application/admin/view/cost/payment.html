@@ -1,0 +1,116 @@
+<form role="form"  class="my-row" check="{:url('checkAjax')}" action="{:url('paymenthanddle')}" jumpUrl="{:url('lst')}">
+		<div class="form-group my-over-hidden" >
+			<div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+				<span class="input-group-addon">申请部门</span>
+				<input type="text" class="form-control check up" name="payment_duty" placeholder="点击输入。。。" >
+				<span class="input-group-addon"><i class="glyphicon" ></i></span>
+			</div>
+		</div>
+
+		  <div class="form-group my-over-hidden" >
+			       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+					  <span class="input-group-addon">经办人</span>
+					   <input type="hidden"  class="form-control  up" name="payment_name" value="{:session('admin_id')}" placeholder="点击输入。。。" >
+					   <input type="text" readonly="readonly" class="form-control check " name="payment_name" value="{:session('admin_name')}"  placeholder="点击输入。。。" >
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  </div>
+
+		<div class="form-group my-over-hidden" >
+			<div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+				<span class="input-group-addon">收款单位</span>
+				<input type="text"  class="form-control check up " name="payment_receivables" placeholder="点击输入。。。" >
+				<span class="input-group-addon"><i class="glyphicon" ></i></span>
+			</div>
+		</div>
+
+		<div class="form-group my-over-hidden" >
+			<div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+				<span class="input-group-addon">合同编号</span>
+				<input type="text" class="form-control check up" name="payment_contract" placeholder="点击输入。。。" >
+				<span class="input-group-addon"><i class="glyphicon" ></i></span>
+			</div>
+		</div>
+	<div class="form-group my-over-hidden" >
+		<div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+			<span class="input-group-addon">申请内容</span>
+			<input type="text" class="form-control check up" name="payment_reason" placeholder="点击输入。。。" >
+			<span class="input-group-addon"><i class="glyphicon" ></i></span>
+		</div>
+	</div>
+
+		<div class="form-group my-over-hidden" >
+			<div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+				<span class="input-group-addon">付款金额</span>
+				<input type="number" myurl="{:url('money')}" class="money form-control check up" name="payment_money" placeholder="只能是数字。。。" >
+				<span class="input-group-addon"><i class="glyphicon" ></i></span>
+			</div>
+		</div>
+
+		<div class="form-group my-over-hidden" >
+			<div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+				<span class="input-group-addon">付款金额大写</span>
+				<input type="text" readonly="readonly" class="moneys form-control check up" name="payment_moneys" >
+				<span class="input-group-addon"><i class="glyphicon" ></i></span>
+			</div>
+		</div>
+
+	<div class="form-group my-over-hidden" >
+		<div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+			<span class="input-group-addon">付款比例</span>
+			<input type="text" class="form-control check up" name="payment_proportion" placeholder="点击输入。。。" >
+			<span class="input-group-addon"><i class="glyphicon" ></i></span>
+		</div>
+	</div>
+
+	<div class="form-group my-over-hidden" >
+		<div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+			<span class="input-group-addon">合同付款比例</span>
+			<input type="text" class="form-control check up" name="payment_actual_proportion" placeholder="点击输入。。。" >
+			<span class="input-group-addon"><i class="glyphicon" ></i></span>
+		</div>
+	</div>
+
+		<div class="form-group my-over-hidden" >
+			  			<div class="col-lg-push-4 col-md-push-4 col-lg-4 col-md-4 ">
+					  	<span   class="btn btn-success btn-block btn-submit" class="up-info">提交 </span>
+			      </div>
+		  </div>
+		  
+		</form>
+	<script>
+
+
+			//初始化绑定指定的事件
+$(function(){
+			var inputs=$('.my-row input.check');
+
+			$.each(inputs, function(index,input) {
+				$(input).blur(function(){
+					submit[index]=0;
+					//获取对应的键值
+					var mykey=$(input).attr('name');
+					var myjson={};
+						myjson[mykey]=$(input).val();
+					$.ajax({
+						type:"post",
+						data:myjson,
+						url:$('.my-row').attr('check'),
+						success:function(data){
+							if(data.state==1){
+								
+								$(input).next().children().remove();
+								$(input).next().html('<i class="glyphicon glyphicon-ok text-success"></i>');
+								submit[index]=1;
+							}else{
+								$(input).next().children().remove();
+								$(input).next().html('<i class="glyphicon glyphicon-remove text-danger"></i>');
+								
+							}
+						}
+					});
+					
+				})
+			});		
+	})
+	</script>

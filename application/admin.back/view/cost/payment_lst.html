@@ -1,0 +1,50 @@
+		<table class="table table-striped table-responsive table-bordered table-hover">
+					<caption class="text-primary h4"><span class="glyphicon glyphicon-th "></span> {$tabTitle}</caption>
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>收款单位</th>
+							<th>付款金额</th>
+							<th>合同编号</th>
+							<th>操作</th>
+						</tr>	
+					</thead>
+					<tbody>
+						{volist name="list" id="vo"}
+							<tr id="tr{$vo.id}">
+							<td>{$vo.id}</td>
+							<td>{$vo.payment_receivables}</td>
+								<td>{$vo.payment_money}</td>
+							<td>{$vo.payment_contract}</td>
+							<td>
+								<!--<span   class="glyphicon  glyphicon-edit text-info my-click-span ajax-get-page"  url="{:url('upd')}" id="{$vo.id}"></span>
+							　-->　<span   class="glyphicon glyphicon-remove text-danger my-click-span" data-toggle="modal" data-target="#myModal{$vo.id}"></span>
+
+								<span   class="glyphicon glyphicon-eye-open text-danger my-click-span get-detail" data-toggle="modal" url="{:url('payment_detail')}" myId="{$vo.id}"
+								></span>
+										
+										<div class="modal fade" id="myModal{$vo.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										    <div class="modal-dialog">
+										        <div class="modal-content">
+										            <div class="modal-header">
+										                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										                <h4 class="modal-title" id="myModalLabel">提示</h4>
+										            </div>
+										            <div class="modal-body">你没有此权限</div>
+										            <div class="modal-footer">
+										                <button type="button" class="btn btn-success" data-dismiss="modal">确认</button>
+										                <!--<span type="button" url="{:url('del')}" name="id" class="btn btn-danger ajax-del" id="{$vo.id}" jumpUrl="{:url('lst')}">确定删除</span>
+										          -->  </div>
+										        </div><!-- /.modal-content -->
+										    </div><!-- /.modal -->
+										</div>
+										
+										
+										
+							</td>
+						</tr>
+						{/volist}
+						
+					</tbody>
+				</table>
+				

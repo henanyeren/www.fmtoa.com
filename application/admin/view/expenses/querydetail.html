@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$detail.monthly_remark}</title>
+<style>
+*{ padding:0; margin:0;}
+body{padding:0; margin:0;font-family: "microsoft yahei";}
+img{ border:none;}
+ul,li{ list-style:none;}
+.left{ float:left; display:inline;}
+.right{ float:right; display:inline;}
+.wlqg{ width:1000px; margin:0 auto;}
+table{border-collapse:collapse;}
+.clear {zoom:1;}
+.clear:after {content:'';display:block;clear:both;height:0px;}
+.wlqg table {width:100%; border:1px solid #888; border-collapse:collapse; line-height:30px; margin:12px auto; word-break:break-all;}
+.wlqg table td {border:1px solid #888; border-collapse:collapse; padding:5px; color:#333; text-align:center;}
+.wlqg table td input[type="text"]{ width:100%; border:none; outline:none; text-align:center; font-size:14px;}
+.tabtit{ height:70px; line-height:50px; margin-bottom:15px;}
+.tabtit h1{font-size:30px; letter-spacing:2px; font-weight:normal; text-align:center;}
+</style>
+</head>
+
+<body>
+<div class="wlqg">
+    <div class="tabtit"><h1>{$detail.monthly_remark}</h1>记账周期{$detail.monthly_time|date="Y-m-d H:i:s",###}--{$detail.monthly_times|date="Y-m-d H:i:s",###}</div>
+  <table>                  
+  <thead> 
+   <tr>
+    <td width="6%">序号</td>
+       <td width="10%">报销人</td>
+	<td width="15%">时间</td>
+	<td width="15%">报销金额</td>
+	<td width="15%">报销事由</td>
+	<td width="20%">备注</td>   
+
+   </tr>
+  </thead>
+  <tbody>
+  {volist name="$detail.monthly_pid" id="vo"}
+   <tr>
+    <td>{$vo.reimbursement_id}</td>
+       <td><input name="" value="{$vo.reimbursement_name}" type="text" /></td>
+    <td><input name=""  value="{$vo.reimbursement_time|date="Y-m-d H:i:s",###}" type="text" /></td>
+	<td><input name="" value="{$vo.reimbursement_money}" type="text" /></td>
+	<td><input name="" value="{$vo.reimbursement_reason}" type="text" /></td>
+	<td><input name="" value="{$vo.reimbursement_remark}" type="text" /></td>
+   </tr>
+   {/volist}
+  </tbody>
+
+</table>
+    <span style="float: right; font-weight: bold; font-size: 24px">合计：{$detail.money}</span>
+</div>
+</body>
+</html>

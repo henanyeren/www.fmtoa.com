@@ -1,0 +1,69 @@
+				
+				<nav class="navbar navbar-default">
+					  <div class="container-fluid">
+					    <!-- Brand and toggle get grouped for better mobile display -->
+					    <div class="navbar-header">
+					      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					        <span class="sr-only">Toggle navigation</span>
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+					      </button>
+					      <a class="navbar-brand" href="#">福妙堂OA</a>
+					    </div>
+					
+					    <!-- Collect the nav links, forms, and other content for toggling -->
+					    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					      <ul class="nav navbar-nav">
+					       
+					      </ul>
+					      <form class="navbar-form navbar-left">
+					        <div class="form-group">
+					          <input type="text" class="form-control" placeholder="Search">
+					        </div>
+					        <button type="submit" class="btn btn-default">搜索</button>
+					      </form>
+					      <ul class="nav navbar-nav navbar-right">
+					        <li><a href="#"><i class="fa fa-user-circle fa-fw"></i> {:session('admin_name')}</a></li>
+					        <li class="dropdown">
+					        	
+					          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-home fa-fw"></i> 个人中心 <span class="caret"></span>&nbsp;
+					          	
+					          		{if condition="$message_counts"}
+					          			<span class="badge" style="background: green;">
+							            		 {$message_counts} 
+							            </span>
+					            	{/if} 
+					          	
+					          </a></a>
+					          <ul class="dropdown-menu">
+					            <li url="{:url('Email/myEmails')}" class="ajax-get-page "><a href="#"><i class="fa fa-comment fa-fw"></i> 未读消息&nbsp;
+					            	{if condition="$email_info_counts"}
+							            	<span class="badge" style="background: green;">
+							            		 {$email_info_counts} 
+					            		  	</span>
+					            	{/if} 					            	
+
+					            
+					           </a></li>					            	
+					            	
+					            <li url="{:url('Routine/untreated')}" class="ajax-get-page "><a href="#"><i style="color: #C7254E;" class="fa fa-flash fa-fw"></i> 未处理事物&nbsp;
+					            	{if condition="$flow_connt"}
+							            	<span class="badge" style="background: green;">
+							            		 {$flow_connt}
+					            		  	</span>
+					            	{/if} 					            	
+					           </a></li>
+					           
+					            <li url="{:url('Routine/myRoutine')}" class="ajax-get-page "><a href="#"><i class="fa fa-circle-thin fa-fw"></i> 我的事务&nbsp;
+					           </a></li>					           
+					           
+					            <li role="separator" class="divider"></li>
+					            <li><a href="{:url('Login/logout')}"><span class="glyphicon glyphicon-off"></span> 退出登陆</a></li>
+					          </ul>
+					        </li>
+					      </ul>
+					    </div><!-- /.navbar-collapse -->
+					  </div><!-- /.container-fluid -->
+					</nav>
+				

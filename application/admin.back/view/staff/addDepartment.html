@@ -1,0 +1,18 @@
+			 <div class="form-group " drop="3" style="margin-top: 30px;">
+				       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+						  <div class="dropdown my-drop">
+								    <button type="button" class="btn dropdown-toggle btn-block drop-btn" id="dropdownMenu1" data-toggle="dropdown">所属部门
+								        <span class="caret"></span>
+								    </button>
+								    <input type="hidden" class="drop-val" name="department_id" value="" />
+								    <!--超级id-->
+								    <!--end-->
+								    <ul class="dropdown-menu drop-ul-three" url={:url('add')} role="menu" aria-labelledby="dropdownMenu1" style="width: 100%; ">
+								        {volist name="pids" id="vo"}
+								        <li role="presentation"  >
+								            <a role="menuitem" tabindex="-1" id="{$vo.department_id}" href="#">{$vo.department_name}</a>
+								        </li>
+								        {/volist}
+								    </ul>
+						</div>
+			  </div>

@@ -1,0 +1,76 @@
+			<div id="content" class="col-lg-11 col-md-10 col-sm-10 my-container">
+
+
+				<form role="form"  class="my-row" check="{:url('checkAjax')}" action="{:url('priceaddhanddle')}" jumpUrl="{:url('lst')}">
+					<div class="form-group " >
+						<div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+							<div class="dropdown my-drop">
+								<button type="button" class="btn dropdown-toggle btn-block drop-btn" id="dropdownMenu1" data-toggle="dropdown">
+									请选者地区
+									<span class="caret"></span>
+								</button>
+
+								<input type="hidden" class="drop-val up-input" name="price_add_id" value="" />
+
+								<ul class="dropdown-menu drop-ul" role="menu" aria-labelledby="dropdownMenu1">
+									{volist name="add" id="vo"}
+									<li role="presentation">
+										<a role="menuitem" tabindex="-1"   id="{$vo.add_id}"href="#">{$vo.address}</a>
+									</li>
+									{/volist}
+								</ul>
+							</div>
+							</div>
+					</div>
+
+					<div class="form-group " >
+						<div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+							<div class="dropdown my-drop">
+								<button type="button" class="btn dropdown-toggle btn-block drop-btn-2" id="dropdownMenu" data-toggle="dropdown">
+									请选者商品
+									<span class="caret"></span>
+								</button>
+
+								<input type="hidden" class="drop-val-2 up-input" name="price_commodity_id" value="" />
+
+								<ul class="dropdown-menu drop-ul-2" role="menu" aria-labelledby="dropdownMenu1">
+									{volist name="co" id="vo"}
+									<li role="presentation">
+										<a role="menuitem" tabindex="-1"   id="{$vo.commodity_id}"href="#">{$vo.commodity_name}</a>
+									</li>
+									{/volist}
+								</ul>
+							</div>
+						</div>
+					</div>
+					<script>
+					//下拉获取值
+					$(document).on('click','.drop-ul-2 li a',function(){
+						$(".drop-val-2").val($(this).attr('id'));
+						$('.drop-btn-2').text($(this).text());
+						
+					})				
+					</script>
+					
+				  <div class="form-group my-over-hidden" >
+					       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+							  <span class="input-group-addon">价格</span>
+							  <input type="text" class="form-control up-input" name="price" placeholder="最多两位小数。。。" >
+							  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+							</div>
+				  </div>
+				
+				  <div class="form-group my-over-hidden" >
+					  			<div class="col-lg-push-4 col-md-push-4 col-lg-4 col-md-4 ">
+							  	<span   class="btn btn-success btn-block btn-check2-submit" class="up-info">提交 </span>
+				</div>
+				  </div>
+				  
+				</form>
+
+				
+		
+			</div>
+<script>
+
+	</script>

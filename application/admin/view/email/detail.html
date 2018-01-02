@@ -1,0 +1,26 @@
+<ul class="list-group">
+<li class="list-group-item text-center">
+   	邮件标题：{$detail.email_title}
+</li>
+
+
+<li class="list-group-item text-center">
+   	发送者：{$detail.alias}
+</li>
+
+<li class="list-group-item text-center">
+   	邮件内容：{$detail.email_content}
+</li>
+
+{if condition="$detail.email_hasfile"}
+<li class="list-group-item text-center">
+   	文件名：{$detail.file_name}
+</li>
+
+<li class="list-group-item text-center">
+   	文件url：{$detail.file}
+</li>
+{/if}
+
+    
+</ul>

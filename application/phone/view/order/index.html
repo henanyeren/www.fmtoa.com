@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>福妙堂医药科技</title>
+<link rel="stylesheet" type="text/css" href="__STATIC__/phone/css.css" />
+<style>
+.hui-tab-title div{width:33.3%;}
+</style> 
+</head>
+<body>
+
+<div class="hui-wrap">
+	<div class="hui-tab-title" id="cate">
+		<div class="hui-tab-active vir">商品列表</div>
+		
+	</div>
+</div>
+<div class="hui-media-list" id="refreshMain" style="padding:18px 5px;">
+		<div class="hui-refresh-icon"></div>
+		<ul id="MainList"></ul>
+	</div>
+
+<script type="text/javascript" src="__STATIC__/phone/jquery-2.0.3.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="__STATIC__/phone/js.js" charset="UTF-8"></script>
+<script type="text/javascript">
+var page = 1, cate = 22;
+load();
+function load(){
+    hui.loading();
+    
+    hui.postJSON(
+    'http://www.fmtoa.com{:url(\'index_lst\')}',
+    {}, 
+    function(res){
+      //huiJsonLog(res);
+      var html = '';
+              for(var i = 0; i < res.data.length; i++){
+                html += '<li><a href="{:url(\'show\',[\'id\'=>'+res.data[i].commodity_id+'])});">'+
+                        '<div class="hui-media-list-img"><img src="http://www.fmtoa.com'+res.data[i].commodity_img+'" /></div>'+
+                        '<div class="hui-media-content"><h1>'+res.data[i].commodity_name+'</h1><p>￥'+res.data[i].price+'</p></div>'+
+                        '</a></li>';
+              }
+
+              //console.log(html);
+              $('#MainList').html(html);
+              hui.closeLoading();
+           
+    },
+    function (e){
+     
+      hui.closeLoading();
+      
+    }
+    
+  );  
+
+    /*$.ajax({
+          type: "post",
+          url: "{:url('index_lst')}",
+        
+          data: {
+            
+          },
+
+          dataType: "json",
+          success: function (res){
+              console.log(res.data);
+              var html = '';
+              for(var i = 0; i < res.data.length; i++){
+                html += '<li><a href="{:url(\'show\',[\'id\'=>'+res.data[i].commodity_id+'])});">'+
+                        '<div class="hui-media-list-img"><img src="http://www.fmtoa.com'+res.data[i].commodity_img+'" /></div>'+
+                        '<div class="hui-media-content"><h1>'+res.data[i].commodity_name+'</h1><p>￥'+res.data[i].price+'</p></div>'+
+                        '</a></li>';
+              }
+
+              //console.log(html);
+              $('#MainList').html(html);
+              hui.closeLoading();
+          },
+          error:function (res) {      
+              alert(JSON.stringify(res));
+          }
+         
+          
+    });*/
+
+	
+
+}
+
+</script>
+</body>
+</html>

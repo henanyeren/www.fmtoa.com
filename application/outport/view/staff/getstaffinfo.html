@@ -1,0 +1,21 @@
+{volist  name="list" id="vo" }
+	<div class="media my-media" userid="{$vo.staff_id}">
+		  <div class="media-left media-middle">
+		    <a href="#">
+		      <img class="media-object" src="
+		{if condition ="$vo.staff_pic" }
+   			{$vo.staff_pic}
+   		{else /}
+   			__ADMIN__/images/staff.png
+   		{/if}		      	
+		      	
+		      	" height="70px" alt="...">
+		    </a>
+		  </div>
+		  <div class="media-body">
+		    <h4 class="media-heading">{$vo.staff_name}</h4>
+		    	{$vo.staff_professional_title}
+		  </div>
+	</div>
+{/volist}
+{$list->render()}

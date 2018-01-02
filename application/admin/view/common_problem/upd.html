@@ -1,0 +1,36 @@
+<form role="form"  class="my-row-no-check"  action="{:url('updhanddle')}" jumpUrl="{:url('lst')}">
+    <input type="hidden" name="problem_id" class="up" value="{$video.problem_id}" />
+    <div class="form-group my-over-hidden" >
+        <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+            <span class="input-group-addon">问题</span>
+            <input type="text" class="form-control check up" value="{$video.problem_name}" name="problem_name" placeholder="点击输入。。。" >
+            <span class="input-group-addon"><i class="glyphicon" ></i></span>
+        </div>
+    </div>
+    <div class="form-group my-over-hidden" >
+        <input type="hidden" name="problem_content" class="up" id="cancer_content" value='{$video.problem_content}'  />
+
+        <script id="editor" type="text/plain" style="width:100%;height:240px;"></script>
+
+        <script>
+        $(function(){
+            UE.delEditor('editor');
+            var ue = UE.getEditor('editor');
+
+            ue.addListener('blur',function(){
+                $("#cancer_content").val(ue.getContent());
+            });
+            UE.getEditor('editor').addListener("ready", function () {
+                // editor准备好之后才可以使用
+                UE.getEditor('editor').setContent($('#cancer_content').val());
+            });
+
+        })
+        </script>
+    </div>
+    <div class="form-group my-over-hidden" >
+        <div class="col-lg-push-4 col-md-push-4 col-lg-4 col-md-4 ">
+            <span   class="btn btn-success btn-block btn-submit-no-check" class="up-info">提交 </span>
+        </div>
+    </div>
+</form>

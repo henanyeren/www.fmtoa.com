@@ -1,0 +1,68 @@
+		<table class="table table-striped table-responsive table-bordered table-hover">
+					<caption><span class="glyphicon glyphicon-th"></span>{$tabTitle}</caption>
+					<thead>
+						<tr>
+					
+							
+							<th>序号</th>
+							<th>报销人</th>
+						    <th>报销时间</th>
+							<th>报销事由</th>
+							<th>报销金额</th>
+							<th>备注</th>
+							<th>操作</th>
+						</tr>	
+					</thead>
+					
+					<tbody>
+
+						
+						{volist name="list" id="vo"}
+						
+						<tr id="tr{$vo.reimbursement_id}">
+							<td>{$vo.reimbursement_id}</td>
+							<td>{$vo.reimbursement_name}</td>
+							<td>{$vo.reimbursement_time|date="Y-m-d H:i:s",###}</td>
+							<td>{$vo.reimbursement_reason}</td>
+							<td>{$vo.reimbursement_money}</td>
+							<td>{$vo.reimbursement_remark}</td>
+							<td>
+								<span   class="glyphicon  glyphicon-edit text-info my-click-span ajax-get-page-sub"  url="{:url('upd')}" id="{$vo.reimbursement_id}"></span>
+									　　<span   class="glyphicon glyphicon-remove text-danger my-click-span " 
+										data-toggle="modal" data-target="#myModal{$vo.reimbursement_id}"
+										></span>
+								<span   class="glyphicon glyphicon-eye-open text-danger my-click-span get-detail" data-toggle="modal" url="{:url('detail')}" myId="{$vo.reimbursement_id}"
+								></span>
+										<div class="modal fade" id="myModal{$vo.reimbursement_id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										    <div class="modal-dialog">
+										        <div class="modal-content">
+										            <div class="modal-header">
+										                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										                <h4 class="modal-title" id="myModalLabel">提示</h4>
+										            </div>
+										            <div class="modal-body">确定要删除吗？这将不可恢复！</div>
+										            <div class="modal-footer">
+										                <button type="button" class="btn btn-success" data-dismiss="modal">取消</button>
+															<span type="button" url="{:url('del')}" name="reimbursement_id" class="btn btn-danger ajax-del" id="{$vo.reimbursement_id}" jumpUrl="{:url('lst')}">确定删除</span>
+										            </div>
+										        </div><!-- /.modal-content -->
+										    </div><!-- /.modal -->
+										</div>
+										
+							</td>
+						</tr>
+						{/volist}
+					
+						
+					</tbody>
+					
+					
+					
+				</table>
+				<!--
+                	作者：wobuzhidaoweishenme@hotmail.com
+                	时间：2017-07-26
+                	描述：模态提示
+                -->
+
+

@@ -1,0 +1,46 @@
+	<form role="form"  class="my-row-no-check" check="{:url('checkAjax')}" action="{:url('addhanddle')}" jumpUrl="{:url('lst')}">
+		  <div class="form-group my-over-hidden" >
+			       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+					  <span class="input-group-addon">部门名称</span>
+					  <input type="text" class="form-control check up" name="duty_name" placeholder="点击输入。。。" >
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  </div>
+
+		  <div class="form-group my-over-hidden" >
+			       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+					  <span class="input-group-addon">部门职务</span>
+					  <textarea type="text" class="form-control check up" name="duty_duty" placeholder="点击输入。。。" ></textarea>
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  </div>
+		  
+				  <div class="form-group " >
+						       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+				  				<div class="dropdown my-drop">
+								    <button type="button" class="btn dropdown-toggle btn-block drop-btn" id="dropdownMenu1" data-toggle="dropdown">所属分类
+								        <span class="caret"></span>
+								    </button>
+								    <input type="hidden" class="drop-val up" name="duty_super_id" value="0" />
+								    <ul class="dropdown-menu drop-ul" role="menu" aria-labelledby="dropdownMenu1">
+								        {volist name="pids" id="vo"}
+								        <li role="presentation">
+								            <a role="menuitem" tabindex="-1"   id="{$vo.duty_super_id}"href="#">{$vo.str}{$vo.duty_name}</a>
+								        </li>
+								        {/volist}
+								    </ul>
+								</div>
+								
+					     </div>
+				  </div>
+		  <div class="form-group my-over-hidden" >
+			  			<div class="col-lg-push-4 col-md-push-4 col-lg-4 col-md-4 ">
+					  	<span   class="btn btn-success btn-block btn-submit-no-check" class="up-info">添加部门 </span>
+			      </div>
+		  </div>
+		  
+
+
+		</form>
+
+

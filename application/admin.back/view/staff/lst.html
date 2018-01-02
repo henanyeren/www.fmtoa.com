@@ -1,0 +1,84 @@
+		<table class="table table-striped table-responsive table-bordered table-hover ">
+			<div class="slider-content">
+
+				<div class="form-group " >
+					<div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+						<div class="dropdown my-drop">
+							<button type="button" class="btn dropdown-toggle btn-block drop-btn" id="dropdownMenu1" data-toggle="dropdown">所属分类
+								<span class="caret"></span>
+							</button>
+							<input type="hidden" class="drop-val up" name="staff_duty_super_id" value="0" />
+							<ul class="dropdown-menu drop-ul" role="menu" aria-labelledby="dropdownMenu1">
+								{volist name="pids" id="vo"}
+								<li role="presentation">
+									<a role="menuitem" tabindex="-1"   id="{$vo.duty_super_id}"href="#">{$vo.str}{$vo.duty_name}</a>
+								</li>
+								{/volist}
+							</ul>
+						</div>
+
+					</div>
+				</div>
+				
+			
+					<caption class="text-primary h4"><span class="glyphicon glyphicon-th "></span> {$tabTitle}</caption>
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>员工姓名</th>
+							<th>员工性别</th>
+							<th>所属部门</th>
+							<th>操作</th>
+						</tr>	
+					</thead>
+					<tbody my="sssssssssss">
+						<div class="list-content">
+						{volist name="list" id="vo"}
+							<tr id="tr{$vo.staff_id}">
+							<td>{$vo.staff_id}</td>
+							<td>{$vo.staff_name}</td>
+							<td>
+								{if condition="$vo.staff_sex"}
+									男
+								{else 	/}
+									女
+								{/if}
+								
+							</td>
+							<td>{$vo.duty_name}</td>
+							<td>
+								<span   class="glyphicon  glyphicon-edit text-info my-click-span ajax-get-page"  url="{:url('upd')}" id="{$vo.staff_id}"></span>
+							　　<span   class="glyphicon glyphicon-remove text-danger my-click-span" data-toggle="modal" data-target="#myModal{$vo.staff_id}"></span>
+								
+								<span   class="glyphicon glyphicon-eye-open text-danger my-click-span get-detail" data-toggle="modal" url="{:url('detail')}" myId="{$vo.staff_id}"
+								></span>
+										
+										<div class="modal fade" id="myModal{$vo.staff_id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										    <div class="modal-dialog">
+										        <div class="modal-content">
+										            <div class="modal-header">
+										                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										                <h4 class="modal-title" id="myModalLabel">提示</h4>
+										            </div>
+										            <div class="modal-body">确定要删除吗？这将不可恢复！</div>
+										            <div class="modal-footer">
+										                <button type="button" class="btn btn-success" data-dismiss="modal">取消</button>
+										                <span type="button" url="{:url('del')}" name="staff_id" class="btn btn-danger ajax-del" id="{$vo.staff_id}" jumpUrl="{:url('lst')}">确定删除</span>
+										            </div>
+										        </div><!-- /.modal-content -->
+										    </div><!-- /.modal -->
+										</div>
+										
+										
+										
+							</td>
+						</tr>
+						{/volist}
+						</div>
+					</tbody>
+								
+					
+				</table>
+				
+
+

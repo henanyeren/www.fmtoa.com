@@ -1,0 +1,104 @@
+			<div id="content" class="col-lg-11 col-md-10 col-sm-10 my-container">
+
+
+				<form role="form"  class="my-row" check="{:url('checkAjax')}" action="{:url('adminaddhanddle')}" jumpUrl="{:url('adminlist')}">
+		
+					<div class="form-group" id="mysuperid" url="{:url('rights/adminadd1')}" >
+						<div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+							<div class="dropdown my-drop">
+								<button type="button" class="btn dropdown-toggle btn-block drop-btn-admin" id="dropdownMenu" data-toggle="dropdown">
+									所属部门
+									<span class="caret"></span>
+								</button>
+
+								<input type="hidden" class="drop-val-admin up-input" name="admin_duty_superid" value="0" />
+
+								<ul class="dropdown-menu drop-ul-admin" role="menu" aria-labelledby="dropdownMenu1">
+									{volist name="pid" id="vo"}
+									<li role="presentation">
+										<a role="menuitem" tabindex="-1"   id="{$vo.duty_super_id}"href="#">{$vo.str}{$vo.duty_name}</a>
+									</li>
+									{/volist}
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="adminmyname">
+					</div>
+					<script>
+					//下拉获取值
+
+					</script>
+					
+				  <div class="form-group my-over-hidden" >
+					       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+							  <span class="input-group-addon">管理员名称</span>
+							  <input type="text" class="form-control up-input" name="admin_name" placeholder="点击输入。。。" >
+							  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+							</div>
+				  </div>
+				  
+				  <div class="form-group my-over-hidden" >
+					       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+							  <span class="input-group-addon">管理员密码</span>
+							  <input type="text" class="form-control up-input" name="admin_password" placeholder="点击输入。。。" >
+							  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+							</div>
+				  </div>
+				  
+				  <div class="form-group my-over-hidden" >
+					       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+							  <span class="input-group-addon">确认密码</span>
+							  <input type="text" class="form-control up-input" name="admin_password1" placeholder="点击输入。。。" >
+							  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+							</div>
+				  </div>
+					<div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+						<div class="dropdown my-drop">
+							<button type="button" class="btn dropdown-toggle btn-block drop-btn" id="dropdownMenu" data-toggle="dropdown">
+								所属地区
+								<span class="caret"></span>
+							</button>
+
+							<input type="hidden" class="drop-val  up-input" name="admin_distribution_super_id" value="0" />
+
+							<ul class="dropdown-menu drop-ul" role="menu" aria-labelledby="dropdownMenu1">
+								{volist name="add" id="vo"}
+								<li role="presentation">
+									<a role="menuitem" tabindex="-1"   id="{$vo.distribution_super_id}"href="#">{$vo.str}{$vo.distribution_name}</a>
+								</li>
+								{/volist}
+							</ul>
+						</div>
+					</div>
+				
+				  <div class="form-group my-over-hidden" >
+						       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+						       	
+						       	{volist name="group_select" id="vo"}
+						       		<input type="radio" name="group_id" value="{$vo.id}" />{$vo.title}<br />
+						       	{/volist}
+						       	
+							 </div>
+				  </div>
+
+
+
+
+
+				  
+				
+				  <div class="form-group my-over-hidden" >
+					  			<div class="col-lg-push-4 col-md-push-4 col-lg-4 col-md-4 ">
+							  	<span   class="btn btn-success btn-block btn-check-radio-submit" class="up-info">提交 </span>
+				</div>
+				  </div>
+				  
+				</form>
+
+				
+		
+			</div>
+<script>
+
+	</script>

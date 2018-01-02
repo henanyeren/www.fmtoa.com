@@ -1,0 +1,88 @@
+{volist name="$untreated_arr" id="vo"}
+<div class="panel panel-danger">
+      <!-- Default panel contents -->
+      <div class="panel-heading">{$vo.table_title}</div>
+      <div class="panel-body">
+        <p></p>
+      </div>
+
+      <!-- Table -->
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>提交者</th>
+            <th>提交者所属部门</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+        {volist name="$vo.table_data"  id="vo1"}
+          <tr id="tr{$vo1.id}"	>
+            <th scope="row">{$vo1.id}</th>
+            <td>{$vo1.admin_alias}</td>
+            <td scope="row">{:date('Y-m-d H:i:s',$vo1.add_time)}</td>
+            <td>
+            	<span class="glyphicon glyphicon-eye-open text-danger my-click-span get-routine-detail  popover-show"
+            		data-toggle="modal"
+            		title="小提示"
+            		
+            		url="{:url('detail')}"
+            		target_table="{$vo.table_name}"
+            		target_id="{$vo1.id}">
+            	</span>
+            	<span class="glyphicon glyphicon-pencil text-danger my-click-span add-remark-model"
+            		toTable="{$vo.table_name}" data-id="{$vo1.id}"
+            		></span>
+            </td>
+          </tr>
+        {/volist}
+        </tbody>
+      </table>
+    </div>
+{/volist}
+
+	<!-- 模态框（Modal） -->
+<div class="modal fade text-center"  id="untreatedModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  style="display: inline-block; width: auto;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body" id="untreatedModalDetail">
+            	
+            </div>
+
+            <div class="modal-footer">
+            	 <button type="button" class="btn btn-success" onclick="print_table()">打印</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<input type="hidden" id="re_content" />
+
+<div class="approve-div" style="display: none;">
+	<script id="editor-detail" type="text/plain"  ></script>
+	<script>
+		var ue_detail;
+		$(function(){
+			UE.delEditor('editor-detail'); 
+			ue_detail = UE.getEditor('editor-detail');
+			
+			ue_detail.addListener('blur',function(){
+		       $("#re_content").val(ue_detail.getContent());
+			})
+		})
+	</script>
+	
+<!--用于审批按钮-->
+ 	<button class="btn btn-block btn-success approval-result" approval-result="1" url="{:url('approval')}" toTable="" data-id="">同意审批</button>
+	<button class="btn btn-block btn-danger approval-result" approval-result="0" url="{:url('approval')}" toTable="" data-id="">拒绝审批</button>
+	
+	
+	
+</div>
+
+

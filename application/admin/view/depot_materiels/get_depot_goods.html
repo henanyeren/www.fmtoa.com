@@ -1,0 +1,41 @@
+ <div class="panel panel-success" style="width: 1000px;">
+      <!-- Default panel contents -->
+      <div class="panel-heading">{$materiel_data.materiel_name}</div>
+      <div class="panel-body">
+        <p></p>
+      </div>
+
+      <!-- Table -->
+      <table class="table table-striped table-responsive table-bordered table-hover">
+        <thead>
+          <tr  >
+				<td width="14%">批号</td>
+			    <td width="14%">编号</td>    
+				<td width="8%">数量</td>  
+				
+				<td width="14%">规格</td>
+				<td width="8%">单位</td>   
+				<td width="10%">时间</td>  
+				<td>备注</td>
+          </tr>
+        </thead>
+        <tbody>
+        {volist name="$materiel_data.GetMaterielsGoodsInfo"  id="vo"}
+          <tr class="getDepotGoods" materiel_id="{$vo.materiel_id}"  >
+          	
+            <td scope="row" class="materiel_batch_number">{$vo.materiel_batch_number}</td>
+            <td scope="row" class="materiel_no">{$vo.materiel_no}</td>
+            
+            <td scope="row" class="materiel_number">{$vo.materiel_number}</td>
+            
+            <td scope="row" >{$materiel_data.materiel_specifications}</td>
+            <td scope="row" >{$materiel_data.materiel_unit}</td>
+            <td scope="row">{:date('Y-m-d',$vo.materiel_add_time)}</td>
+            <td scope="row">{$vo.materiel_remark}</td>
+            
+          
+          </tr>
+        {/volist}
+        </tbody>
+      </table>
+    </div>

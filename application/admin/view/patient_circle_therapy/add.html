@@ -1,0 +1,305 @@
+<form role="form"  class="my-row-no-check" check="{:url('checkAjax')}" action="{:url('addhanddle')}" jumpUrl="{:url('lst')}">
+		
+		<ul class="nav nav-tabs" id="myTab">
+		  <li class="active"><a href="#t1">基本信息</a></li>
+		  <li><a href="#t2">现病史</a></li>
+		  <li><a href="#t3">既往史</a></li>
+		  <li><a href="#t4">个人史</a></li>
+		  <li><a href="#t5">月经史</a></li>
+		  <li><a href="#t6">家族史</a></li>
+		  <li><a href="#t7">体格检查</a></li>
+		  <li><a href="#t11">中医四诊</a></li>
+		  
+		  
+		  <li><a href="#t8">辅助检查</a></li>
+		  <li><a href="#t12">中医诊断</a></li>
+		  <li><a href="#t9">西医诊断</a></li>
+		  <li><a href="#t10" myName="patiend_therapeutic_opinion">治疗意见</a></li>
+		  
+		</ul>
+	    
+	    
+		<div class="tab-content"  style="margin-top: 20px;">
+		  <div class="tab-pane active" id="t1">
+		  	
+		  	 <div class="form-group my-over-hidden" >
+			       <div class="input-group   ">
+					  <span class="input-group-addon">姓名</span>
+					  <input type="text" class="form-control check up" name="patiend_name" placeholder="点击输入。。。" >
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  	</div>
+		  	
+		  	
+		  	<div class="form-group my-over-hidden" >
+		  		
+			       <div class="input-group   ">
+			       	<input type="hidden" name="patiend_sex" class="my-radio-val up" value="" />
+					 <div class="btn-group my-radio btn-group-justified" data-toggle="buttons">
+						<label for="" class="btn btn-primary active">
+							<input type="radio" name="sex" value="1" />男
+						</label>
+						<label for="" class="btn btn-primary active">
+							<input type="radio" name="sex" value="0" />女
+						</label>
+					</div>
+					</div>
+					
+		  	</div>
+		  	
+		  	 <div class="form-group my-over-hidden" >
+			       <div class="input-group   ">
+					  <span class="input-group-addon">年龄</span>
+					  <input type="text" class="form-control check up" name="patiend_age" placeholder="点击输入。。。" >
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  	</div>
+		  	
+		  	 <div class="form-group my-over-hidden" >
+			       <div class="input-group   ">
+					  <span class="input-group-addon">民族</span>
+					  <input type="text" class="form-control check up" name="patiend_nation" placeholder="点击输入。。。" >
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  	</div>
+		  	
+		  	 <div class="form-group my-over-hidden" >
+			       <div class="input-group   ">
+					  <span class="input-group-addon">婚姻</span>
+					  <input type="text" class="form-control check up" name="patiend_marriage" placeholder="点击输入。。。" >
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  	</div>
+		  	
+		  	 <div class="form-group my-over-hidden" >
+			       <div class="input-group   ">
+					  <span class="input-group-addon">职业</span>
+					  <input type="text" class="form-control check up" name="patiend_profession" placeholder="点击输入。。。" >
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  	</div>	
+		  	
+		  	
+		  	 <div class="form-group my-over-hidden" >
+			       <div class="input-group   ">
+					  <span class="input-group-addon">工作或家庭地址</span>
+					  <input type="text" class="form-control check up" name="patiend_work_addr" placeholder="点击输入。。。" >
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  	</div>			  	
+		  	
+		  	
+		  	 <div class="form-group my-over-hidden" >
+			       <div class="input-group   ">
+					  <span class="input-group-addon">电话</span>
+					  <input type="text" class="form-control check up" name="patiend_tel" placeholder="点击输入。。。" >
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  	</div>	
+		  	
+		  	
+		  	 <div class="form-group my-over-hidden" >
+			       <div class="input-group   ">
+					  <span class="input-group-addon">药物过敏史</span>
+					  <input type="text" class="form-control check up" name="patiend_allergy" placeholder="点击输入。。。" >
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  	</div>	
+		  	
+		  	
+		  	 <div class="form-group my-over-hidden" >
+			       <div class="input-group   " >
+					  <span class="input-group-addon">就诊时间</span>
+					  <input type="text" class="form-control check up" name="patiend_visi_time" placeholder="点击输入。。。" >
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  	</div>	
+	
+		  	
+		  	 <div class="form-group my-over-hidden" >
+			       <div class="input-group   " >
+					  <span class="input-group-addon">主述</span>
+					  <input type="text" class="form-control check up" name="patiend_main_desc" placeholder="点击输入。。。" >
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  	</div>	
+	
+			<hr />
+		  </div>
+		  <div class="tab-pane" id="t2">
+		  	现病史
+			  <hr />
+		  <input type="hidden" name="patiend_disease_history" class="up" id="cancer_content"/>
+
+		  	
+		  </div>
+		  <div class="tab-pane" id="t3">
+		  	既往史
+			<input type="hidden" name="patiend_previous_history"  class="up" id="cancer_content"/>
+			
+		  	<hr />		  	
+		  </div>
+			<div class="tab-pane" id="t4">
+				个人史
+				<input type="hidden" name="patiend_previous_history"  class="up" id="cancer_content"/>
+
+				<hr />
+			</div>
+		  
+		  <div class="tab-pane" id="t5">
+		  	月经史
+			<input type="hidden"  name="patiend_menstrual_history" class="up" id="cancer_content"/>
+		
+		  	<hr />		  			
+		  	
+		  	
+		  </div>
+		  <div class="tab-pane" id="t6">
+			  	家族史
+			<input type="hidden" name="patiend_family_history" class="up" id="cancer_content" />
+			
+		  	<hr />				  	
+		  	
+		  </div>
+		  <div class="tab-pane" id="t11">
+		  	
+			中医四诊
+			<input type="hidden" name="patiend_tcm" class="up" id="cancer_content"/>
+
+		  	<hr />						  	
+		  </div>
+		  
+		
+		  <div class="tab-pane" id="t7">
+		  	体格检查
+			<input type="hidden" name="patiend_physical_examination" class="up" id="cancer_content"/>
+	
+		  	<hr />				  	
+		  			    	
+		  	
+		  </div>		
+		
+		  <div class="tab-pane" id="t8">
+		  	辅助检查
+			<input type="hidden" name="patiend_accessory_examination" class="up" id="cancer_content"/>
+
+		  	<hr />				
+		  </div>
+		  <div class="tab-pane" id="t12">
+		  	
+		  	中医诊断
+			<input type="hidden" name="patiend_tcm_diagnosis" class="up" id="cancer_content"/>
+			<script id="editor71" type="text/plain" style="width:100%;height:240px;"></script>
+
+		  	<hr />
+		  </div>
+		   <div class="tab-pane" id="t9">
+						  	西医诊断
+			<input type="hidden" name="patiend_western_diagnosis" class="up" id="cancer_content"/>
+
+		  	<hr />				  	
+		  </div>
+		  
+		  
+		  <div class="tab-pane" id="t10">
+		  	治疗意见
+			<input type="hidden" name="patiend_therapeutic_opinion" class="up" id="cancer_content"/>
+
+				
+		  	 <div class="form-group my-over-hidden" style="margin-top: 30px;">
+			       <div class="input-group   ">
+					  <span class="input-group-addon">医生签名</span>
+					  <input type="text" class="form-control check up" name="patiend_doctor_signature" placeholder="点击输入。。。" >
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  	</div>				
+				
+		  	<hr />				  	
+		  	
+		  </div>		
+		  
+
+		</div>
+		
+		<script id="editorMax" type="text/plain" style="width:100%;height:240px; display: none;"></script>
+		
+		<script>
+			function setInput(eContent){
+		    	$(".tab-content div.tab-pane.active input[type='hidden'].up").val(eContent); 		
+		    }
+			
+			function setUe(){
+		    	ueMax.setContent($(".tab-content div.tab-pane.active input[type='hidden'].up").val()); 		
+		    }
+			
+			var myName="";
+			var ueMax;
+		  $(function () {
+		  	UE.delEditor('editorMax');
+		  		
+				ueMax = UE.getEditor('editorMax');
+				ueMax.addListener('blur',function(){
+					setInput(ueMax.getContent());
+				});
+		  	
+		    $('#myTab a:first').tab('show');
+		  })
+		  $('#myTab a').click(function (e) {
+			  e.preventDefault();
+			  $(this).tab('show');
+			  
+			  //判断如果是第一tab则隐藏
+			  if($(this).attr('href')=="#t1"){
+			  	$("#editorMax").css({"display":"none"});
+			  }else{
+			  	setUe();
+			  	$("#editorMax").css({"display":"block"});
+			  }
+			  //找到制定Nameinput
+			  
+			   myName=$(this).attr("myName");
+		})
+		</script>
+		
+		
+		<div class="form-group my-over-hidden" style="margin-top: 40px;">
+			  			<div class="   ">
+					  	<span   class="btn btn-success btn-block btn-submit-no-check" class="up-info">添加疑难杂症 </span>
+			      </div>
+		</div>
+		</form>
+
+	<script>
+			//初始化绑定指定的事件
+	$(function(){
+		
+			var inputs=$('.my-row input.check');
+
+			$.each(inputs, function(index,input) {
+				$(input).blur(function(){
+					submit[index]=0;
+					//获取对应的键值
+					var mykey=$(input).attr('name');
+					var myjson={[mykey]:$(input).val()};
+					$.ajax({
+						type:"post",
+						data:myjson,
+						url:$('.my-row').attr('check'),
+						success:function(data){
+							if(data.state==1){
+								
+								$(input).next().children().remove();
+								$(input).next().html('<i class="glyphicon glyphicon-ok text-success"></i>');
+								submit[index]=1;
+							}else{
+								$(input).next().children().remove();
+								$(input).next().html('<i class="glyphicon glyphicon-remove text-danger"></i>');
+								
+							}
+						}
+					});
+					
+				})
+			});		
+	})
+	</script>

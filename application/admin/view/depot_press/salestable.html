@@ -1,0 +1,109 @@
+		<style>
+			*{ padding:0; margin:0;}
+			body{padding:0; margin:0;font-family: "microsoft yahei";}
+			img{ border:none;}
+			ul,li{ list-style:none;}
+			.left{ float:left; display:inline;}
+			.right{ float:right; display:inline;}
+			.wlqg{ width:1000px; margin:0 auto;}
+			table{border-collapse:collapse;}
+			.clear {zoom:1;}
+			.clear:after {content:'';display:block;clear:both;height:0px;}
+			.ddtop{}
+			.wlqg table {width:100%; border:1px solid #ddd; border-collapse:collapse; line-height:30px; margin:12px auto; word-break:break-all;}
+			.wlqg table td {border:1px solid #ddd; border-collapse:collapse; padding:5px; color:#333; text-align:center;}
+			.wlqg table td input[type="text"]{ width:100%; border:none; outline:none; text-align:center; font-size:14px;}
+			.tabtit{height:50px; line-height:50px; margin-bottom:15px; position:relative;}
+			.tabtit h1{font-size:30px; letter-spacing:2px; font-weight:normal; text-align:center;}
+			.tabtit img{     width: 50px;
+						    height: 50px;
+						    display: block;
+						    position: absolute;
+						    left: 9px;
+						    top: -10px;}
+			.wlqg table td .add,.wlqg table td .del{ margin:0 5px; cursor:pointer;}
+			.bh{ text-align:left; float:left; width:20%; margin-bottom:10px;}
+			.qltit-tab,.qltit-tab2{ clear:both; height:25px;}
+			.qltit-tab li,.qltit-tab2 li{    width: 28.33%;
+								    float: left;
+								    height: 25px;
+								    line-height: 25px;}
+			.qltit-tab li:first-child{ width:17%;margin-left: 25px;}
+			.qltit-tab li label,.qltit-tab2 li label{ float:left;}
+			.qltit-tab li span,.qltit-tab2 li span{ width:60%; float:left;}
+			.qltit-tab li.right{     float: right;
+    							width: 22%;}
+			.qltit-tab li.right span{ width:20%;}
+			.qltit-tab li.right span input{ text-align:center!important;}
+			.qltit-tab li span input[type="text"],.qltit-tab2 li span input[type="text"]{ width:100%; border:none;  outline:none; text-align:left; height:25px; line-height:25px; font-size:14px;}
+		</style>
+
+			<div class="wlqg">
+			  <div class="tabtit"><h1>销售退库</h1><img src="__ADMIN__/images/logo.png" alt=""></div>
+			  
+			  <ul class="qltit-tab">
+			  	<li class="bh"><label>NO：{$data.materiel_id}</label><span></span></li>
+				<li><label>退库单位：</label><span>{$data.materiel_delivery_unit}</span></li>
+				
+			   <li class="right"><label>日期：{:date("Y年m月d日",$data.materiel_add_time)}</label></li>
+			   </ul>
+			  <table>
+			  <thead> 
+			   <tr>
+			   	<td width="5%">序号</td>
+			   	<td width="12%">名称</td>
+			    <td width="12%">生产批号</td>
+				<td width="12%">编号</td>
+				
+				<td width="9%">数量</td>  
+				<td width="10%">品名及规格</td> 
+				<td width="7%">单位</td>   
+				 
+				<td width="9%">单价</td>
+				<td width="9%">金额</td>
+				 
+				<!--<td width="10%">配备</td> -->
+				<td width="22%">备注</td>
+			   </tr>
+			  </thead>
+			  <tbody>
+				{volist name="$data.DepotPressMaterielsGoods" id="vo" key="i"}
+				   <tr>
+				   	<td>{$i}</td>
+				   	<td>{$vo.materiel_name}</td> 
+				    <td>{$vo.materiel_batch_number}</td>    
+					<td>{$vo.materiel_no}</td> 
+					
+					<td>{$vo.materiel_number}</td>
+					<td>{$vo.materiel_specifications}</td>    
+					<td>{$vo.materiel_unit}</td>    
+					
+					<td>{$vo.materiel_univalent}</td>
+					
+					<td>{$vo.material_total_money}</td>
+					
+					<td>{$vo.materiel_remark}</td>
+				   </tr>
+				{/volist}
+			  </tbody>	
+			</table>
+			<ul class="qltit-tab2">
+			   <li><label>退库人：{$data.cancellingStocks.alias}</li>
+			   	<li><label>检验员：{$data.Qc.alias}</li>
+			   <li style="float: right;"><label>仓库员：{$data.Godownkeeper.admin_name}</li>
+			   </ul>
+			   <div style=" margin-top:10px;text-align:left; letter-spacing:2px;">附：第一联：仓库存根联（白）；第二联：财务存根联（红）；第三联：收货存根联（黄）</div>
+			</div>
+
+<hr />
+<br />
+<br />
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">单据备注</h3>
+    </div>
+    <div class="panel-body">
+        {$data.materiel_remark}
+    </div>
+</div>

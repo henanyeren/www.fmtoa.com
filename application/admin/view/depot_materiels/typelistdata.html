@@ -1,0 +1,15 @@
+<div class="dropdown Xdrop-list-data" style=" margin: 20px;">
+    <button type="button" class="btn dropdown-toggle btn-block drop-btn-depot " id="dropdownMenu1" data-toggle="dropdown">
+		所属类别
+    <span class="caret"></span>
+    </button>
+
+    <input type="hidden"  class="drop-val-depot  up" name="materiel_type_pid" value="0" />
+    <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
+        {volist name="list" id="vo"}
+                <li role="presentation" class="XPtype-list">
+                    <a role="menuitem"  url="{:url('DepotMateriels/lst')}" type_id="{$vo.type_id}" name="type_super_id"  style="padding: 10px 30px;"  href="#">{$vo.type_name}</a>
+                </li>
+        {/volist}
+    </ul>
+</div>

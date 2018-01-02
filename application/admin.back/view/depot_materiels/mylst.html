@@ -1,0 +1,21 @@
+<div class="form-group unlimited  myremove{$type_id}"  >
+    <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+        <div class="dropdown my-drop">
+            <button type="button" class="btn dropdown-toggle btn-block drop-btn-depot{$type_id}" id="dropdownMenu1" data-toggle="dropdown">
+                所属类别
+                <span class="caret"></span>
+            </button>
+
+            <input type="hidden"  class="drop-val-depot{$type_id} " name="meteriel_type_super_id" value="0" />
+
+            <ul class="dropdown-menu drop-ul-depots" role="menu" aria-labelledby="dropdownMenu1">
+                {volist name="mylist" id="vo"}
+                <li role="presentation">
+                    <a role="menuitem" pid="{$type_id}" name="type_super_id" tabindex="-1"  url="{:url('adds')}"  id="{$vo.type_super_id}" href="#">{$vo.type_name}</a>
+                </li>
+                {/volist}
+            </ul>
+        </div>
+
+    </div>
+</div>

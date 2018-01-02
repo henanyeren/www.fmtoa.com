@@ -1,0 +1,31 @@
+				<div class= "col-lg-2 col-md-2 col-sm-3" id="slider-left">
+					
+					<div  class="panel-group my-panel-group" id="panel-group-parent" >
+						
+						{volist name="module_list_selectM" id="vo1"}
+							<div class="panel panel-default ">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse"
+										 data-parent="#panel-group-parent" href="#collapse{$vo1.module_id}" class="collapsed "  >
+											<i class="fa fa-{$vo1.module_icon} fa-fw"></i> {$vo1.module_name}								
+									</a>
+								</h4>
+							</div>
+							<div id="collapse{$vo1.module_id}" class="panel-collapse collapse">
+									<ul class="list-group">
+										{volist name="$vo1.children" id="vo2"}
+								  			<li url="{:url($vo2.module_url)}" module_parameter="{$vo2.module_parameter}" class="list-group-item ajax-get-page "><i class="fa fa-{$vo2.module_icon} fa-fw"></i> {$vo2.module_name}</li>
+								  		{/volist}
+									</ul>
+									
+								</div>
+							</div>
+						{/volist}
+							
+
+					</div>
+				
+				
+				</div>
+								

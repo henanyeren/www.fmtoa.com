@@ -1,0 +1,110 @@
+	<form role="form"  class="my-row-no-check" check="{:url('checkAjax')}" action="{:url('addhanddle')}" jumpUrl="{:url('outbox')}">
+		
+		<caption class="text-primary h4"><span class="glyphicon glyphicon-th "></span> {$tabTitle}</caption>
+		<input type="hidden" class=" up-input up" name="email_from_id" value="{$admin_id}" />
+		
+					<div class="form-group" >
+						<div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+							<div class="dropdown my-drop">
+								<button type="button" class="btn dropdown-toggle btn-block drop-btn-2" id="dropdownMenu" data-toggle="dropdown">
+									选择收件人
+									<span class="caret"></span>
+								</button>
+
+								<input type="hidden" class="drop-val-2 up up-input" name="email_to_id" value="0" />
+
+								<ul class="dropdown-menu drop-ul-2" role="menu" aria-labelledby="dropdownMenu1">
+									{volist name="pid" id="vo"}
+									<li role="presentation">
+										<a role="menuitem" tabindex="-1"   id="{$vo.admin_id}"href="#">{$vo.str}{$vo.admin_name}</a>
+									</li>
+									{/volist}
+								</ul>
+							</div>
+						</div>
+					</div>
+					<script>
+					//下拉获取值
+					$(document).on('click','.drop-ul-2 li a',function(){
+						$(".drop-val-2").val($(this).attr('id'));
+						$('.drop-btn-2').text($(this).text());
+						
+					})				
+					</script>
+
+		  <div class="form-group my-over-hidden" >
+			       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+					  <span class="input-group-addon">邮件标题</span>
+					  <input type="text" class="form-control check up " name="email_title" placeholder="点击输入。。。" >
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  </div>
+		  
+		  <div class="form-group my-over-hidden " >
+		  		<input type="hidden" class="email_file up" name="email_file" />
+			       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4" style="text-align: center;">
+					  <span class="fa fa-file-zip-o " style="font-size: 3em; margin: 10px;"></span>
+						<div class="progress">
+							<div id="thumb_progress" class="progress-bar" style="width:0%;"></div>
+						</div>
+						<span id="thumb_upload" class="btn btn-primary fileinput-button">  
+							<span id="btnVal">上传附件</span>
+							<input id="" placeholder="" class="thumb" type="file" name="thumb">
+						</span>
+					</div>
+		  </div>		  
+		  
+		<link rel="stylesheet" href="__PUBLIC__/jfu/css/jquery.fileupload.css">  
+		<link rel="stylesheet" href="__PUBLIC__/jfu/css/jquery.fileupload-ui.css"> 
+		<script src="__PUBLIC__/jfu/js/vendor/jquery.ui.widget.js"></script>  
+		<script src="__PUBLIC__/jfu/js/jquery.fileupload.js"></script>  
+		<script src="__PUBLIC__/jfu/js/jquery.iframe-transport.js"></script>
+    <script type="text/javascript">
+    		$(function() {
+		        $(".thumb").fileupload({ 
+		                url: '{:url("upload")}',  
+		                sequentialUploads: true
+		            }).bind('fileuploadprogress', function (e, data) {  
+		                var progress = parseInt(data.loaded / data.total * 100, 10);  
+		                $("#thumb_progress").css('width',progress + '%');  
+		                $("#thumb_progress").html(progress + '%');  
+		            }).bind('fileuploaddone', function (e, data) {
+		            	if(data.result.status==1){
+		            		$(".email_file").val(data.result.msg);
+		            	}
+		                $("#btnVal").html("重新上传");
+		                //$("#thumb_upload").css({display:"none"});  
+		            });  
+		        });  
+    </script> 
+		
+
+		
+		  <div class="form-group my-over-hidden" >
+		  	<input type="hidden" name="email_content" class="up" id="cancer_content"/>
+				     	<!--<script type="text/plain" id="myEditor" style="width:100%;height:240px;">
+							    <p>这里我可以写一些输入提示</p>
+							</script>-->
+						<script id="editor" type="text/plain" style="width:100%;height:240px;"></script>
+
+							<script>
+								$(function(){
+									UE.delEditor('editor'); 
+									var ue = UE.getEditor('editor');
+									ue.addListener('blur',function(){
+								       $("#cancer_content").val(ue.getContent());
+									})
+								})
+							</script>
+		  </div>
+		  
+		  
+		  
+		  <div class="form-group my-over-hidden" >
+			  			<div class="col-lg-push-4 col-md-push-4 col-lg-4 col-md-4 ">
+					  	<span   class="btn btn-success btn-block btn-submit-no-check" class="up-info">发送邮件 </span>
+			      </div>
+		  </div>
+		  
+			<div class="content-box"></div>		  
+		</form>

@@ -1,0 +1,2 @@
+211.159.177.229
+vim /usr/local/nginx/conf/nginx.conf

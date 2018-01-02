@@ -1,0 +1,79 @@
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.3.0.js"></script>
+<script type="text/javascript">
+    function WeChat(title,ShareLink,ShareImgUrl,desc,backUrl){
+        // 微信配置
+        wx.config({
+
+            debug: false,
+            appId: "{$signPackage['appId']}",  //公众号的唯一标识
+            timestamp: '{$signPackage["timestamp"]}',  //生成签名的时间戳
+            nonceStr: '{$signPackage["nonceStr"]}',   //生成签名的随机串
+            signature: '{$signPackage["signature"]}',  //签名
+            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ','onMenuShareQZone','hideOptionMenu']  // 功能列表，我们要使用JS-SDK的什么功能
+        });
+
+        wx.ready(function() {
+
+
+            wx.error(function (res) {
+                alert(JSON.stringify(res))
+            })
+            // 获取"分享到朋友圈"按钮点击状态及自定义分享内容接口
+            wx.onMenuShareTimeline({
+                title: title, // 分享标题
+                link: ShareLink,
+                desc: desc,
+                imgUrl: ShareImgUrl, // 分享图标
+                success: function () {
+                    window.location.href = backUrl;
+                },
+                cancel: function () {
+                    return false;
+                }
+            });
+
+            // 获取"分享给朋友"按钮点击状态及自定义分享内容接口
+            wx.onMenuShareAppMessage({
+                title: title, // 分享标题
+                desc: desc, // 分享描述
+                link: ShareLink,
+                imgUrl: ShareImgUrl, // 分享图标
+                success: function () {
+                    window.location.href = backUrl;
+                },
+                cancel: function () {
+                    return false;
+                }
+            });
+            // 分享到QQ
+            wx.onMenuShareQQ({
+                title: title, // 分享标题
+                desc: desc, // 分享描述
+                link: ShareLink,
+                imgUrl: ShareImgUrl, // 分享图标
+                success: function () {
+                    window.location.href = backUrl;
+                },
+                cancel: function () {
+                    return false;
+                }
+            });
+            // 分享到QQ空间
+            wx.onMenuShareQZone({
+                title: title, // 分享标题
+                desc: desc, // 分享描述
+                link: ShareLink,
+                imgUrl: ShareImgUrl, // 分享图标
+                success: function () {
+                    window.location.href = backUrl;
+                },
+                cancel: function () {
+                    return false;
+                }
+            });
+    });
+    };
+        WeChat('你的好友{$Request.cookie.name}给你分享了一个好玩的游戏',"http://www.fmtoa.com/gamed/game/game?id={$Request.cookie.id}","http://www.fmtoa.com/game_img/game.png",
+            '你的好友{$Request.cookie.name}给你分享了一个好玩的游戏:(',"http://www.fmtoa.com/gamed/game/details");
+
+</script>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html style="height: 100%;"> 
+	
+		<head>
+		<meta charset="UTF-8">
+		<title>__TITLE__</title>
+		<link href="__BOOTSTRAP__/css/bootstrap.css"  rel="stylesheet"/>
+		<script src="__BOOTSTRAP__/js/jquery-3.1.1.min.js"></script>
+		<script src="__BOOTSTRAP__/js/bootstrap.min.js"></script>
+		
+		    <script type="text/javascript" charset="utf-8" src="/static/ue/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/ue/ueditor.all.min.js"> </script>
+	
+		
+		<link href="__ADMIN__/css/admin.css" rel="stylesheet" />
+		<link rel="stylesheet" href="/static/font-awesome-4.7.0/css/font-awesome.min.css" />
+		<style>
+			.search-main{
+				    position: absolute;
+			    width: 700px;
+			    height: 700px;
+			    top: 50%;
+			    left: 50%;
+			    margin-top: -350px;
+			    margin-left: -350px;
+			}
+			.search-main .log-div{
+				width: 94px;
+				margin-left:303px ;
+				
+			}
+			.search-main .search-input{
+				margin-top: 100px;
+			}
+			.search-main .search-content{
+				margin-top: 20px;
+			}
+			.my-media{
+				cursor: pointer;
+				border: 1px solid gray;
+				border-radius: 8px;
+			}
+			.my-media:hover{
+				box-shadow: 5px 5px 5px #000;
+			}
+		</style>
+	</head> 
+	
+	<body style="height: 100%;">
+		
+		<div class="search-main">
+			<div class="log-div" >
+				
+				<img src="__ADMIN__/images/logo.png"  />
+				
+			</div>
+			
+			<div class="input-group input-group-lg search-input">
+				
+				<div class="input-group" style="width: 700px;">
+					<input type="text" class="form-control" id="user-input" placeholder="输入员工信息">
+					<div class="input-group-btn">
+						<button type="button" url={:url('getStaffInfo')} class="btn btn-default dropdown-toggle" id="searach-btn" data-toggle="dropdown">
+							查 询 
+						</button>
+					</div><!-- /btn-group -->
+				</div><!-- /input-group -->
+			
+			
+			</div>
+			
+			<div class="search-content">
+			</div>
+
+
+
+
+		</div>
+					<!-- 模态框（Modal） -->
+<div class="modal fade "  id="publicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalTitle"></h4>
+            </div>
+            <div class="modal-body" id="publicModalDetail"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+	
+	</body>
+	
+	
+	
+	
+</html>
+
+<script>
+	
+	$(document).on('click','.pagination a',function(){
+		var url=$(this).attr('href');
+		$.ajax({
+			type:"get",
+			url:url,
+			success:function(data){
+				$('.search-content').html(data.page);
+			}
+		});
+		
+		return false;
+	})
+	
+	//获取员工信息详情
+	
+	$(document).on('click','.my-media',function(){
+		var data={};
+		data['userid']=$(this).attr('userid');
+		$.ajax({
+			type:"post",
+			url:"{:url('detail')}",
+			data:data,
+			success:function(data){
+				if(data.status==1){
+					$('#publicModalDetail').html(data.page);
+					$('#publicModal').modal('toggle');
+				}
+			}
+		});
+	})
+	
+	
+	$('#searach-btn').click(function(){
+		$.ajax({
+			type:"post",
+			url:$(this).attr('url'),
+			data:{
+				res:$('#user-input').val()
+			},
+			success:function(data){
+				if(data.status==1){
+					$('.search-content').html(data.page);
+				}else{
+					alert(data.msg);
+				}
+				
+			}
+			
+		});
+	})
+</script>

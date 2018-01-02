@@ -1,0 +1,58 @@
+<form role="form"  class="my-row-no-check"  check="{:url('upload')}"  action="{:url('updhanddle')}" jumpUrl="{:url('lst')}">
+    <input type="hidden" name="apply_id" class="up" value="{$apply.apply_id}" />
+
+    <div class="form-group my-over-hidden " >
+        <input type="hidden" class="up pic" name="apply_url" value="{$apply.apply_url}" /><span id="p" style="display: none;"></span>
+
+        <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4" style="text-align: center;">
+            <img src="__ADMIN__/images/upload.png" id="img" name="img" width="130">
+            <div class="progress">
+                <div id="thumb_progress" class="progress-bar" style="width:0%;"></div>
+            </div>
+            <span id="thumb_upload" class="btn btn-primary fileinput-button">
+							<span>上传图片</span>
+							<input id="" placeholder="" class="thumb" type="file" name="thumb">
+						</span>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="__PUBLIC__/jfu/css/jquery.fileupload.css">
+    <link rel="stylesheet" href="__PUBLIC__/jfu/css/jquery.fileupload-ui.css">
+    <script src="__PUBLIC__/jfu/js/vendor/jquery.ui.widget.js"></script>
+    <script src="__PUBLIC__/jfu/js/jquery.fileupload.js"></script>
+    <script src="__PUBLIC__/jfu/js/jquery.iframe-transport.js"></script>
+
+
+    <script type="text/javascript">
+        $(function() {
+            $(".thumb").fileupload({
+                url: '{:url("uploads")}',
+                sequentialUploads: true
+            }).bind('fileuploadprogress', function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $("#thumb_progress").css('width',progress + '%');
+                $("#thumb_progress").html(progress + '%');
+            }).bind('fileuploaddone', function (e, data) {
+                //$("#img").attr("src",data.result);
+                $(".pic").val(data.result[1]);
+                $('#p').html(data.result[0]);
+                //$("#thumb_upload").css({display:"none"});
+            });
+        });
+    </script>
+    <div class="form-group my-over-hidden" >
+        <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+            <span class="input-group-addon">标题</span>
+            <input type="text" value="{$apply.apply_name}" class="form-control check up" name="apply_name" placeholder="点击输入。。。" >
+            <span class="input-group-addon"><i class="glyphicon" ></i></span>
+        </div>
+    </div>
+
+
+
+    <div class="form-group my-over-hidden" >
+        <div class="col-lg-push-4 col-md-push-4 col-lg-4 col-md-4 ">
+            <span   class="btn btn-success btn-block btn-submit-no-check" class="up-info">提交 </span>
+        </div>
+    </div>
+</form>

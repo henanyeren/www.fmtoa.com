@@ -1,0 +1,66 @@
+			<div id="content" class="col-lg-11 col-md-10 col-sm-10 my-container">
+
+
+				<form role="form"  class="my-row" check="{:url('checkAjax')}" action="{:url('edit')}" jumpUrl="{:url('lst')}">
+					<input type="hidden" name="id" value="{$detail_info.id}" />
+				  <div class="form-group my-over-hidden" >
+					       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+							  <span class="input-group-addon">规则名称</span>
+							  <input type="text"  value="{$detail_info.name}" class="form-control" name="name" placeholder="点击输入。。。" >
+							  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+							</div>
+				  </div>
+				
+				  <div class="form-group my-over-hidden" >
+						       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+							  <span class="input-group-addon" id="basic-addon1">规则方法</span>
+							  <input type="text"  value="{$detail_info.title}" class="form-control" name="title" placeholder="点击输入。。。" >
+								<span class="input-group-addon"><i class="glyphicon"></i></span>
+						       </div>
+				  </div>
+				  
+				  <div class="form-group my-over-hidden" >
+					  			<div class="col-lg-push-4 col-md-push-4 col-lg-4 col-md-4 ">
+							  	<span   class="btn btn-success btn-block btn-submit" class="up-info">提交 </span>
+					      </div>
+				  </div>
+				  
+				</form>
+
+
+		
+			</div>
+	<script>
+			//初始化绑定指定的事件
+	$(function(){
+
+			var inputs=$('.my-row input');
+
+			$.each(inputs, function(index,input) {
+				$(input).blur(function(){
+					submit[index]=0;
+					//获取对应的键值
+					var mykey=$(input).attr('name');
+					var myjson={[mykey]:$(input).val()};
+					$.ajax({
+						type:"post",
+						data:myjson,
+						url:$('.my-row').attr('check'),
+						success:function(data){
+							if(data.state==1){
+								
+								$(input).next().children().remove();
+								$(input).next().html('<i class="glyphicon glyphicon-ok text-success"></i>');
+								submit[index]=1;
+							}else{
+								$(input).next().children().remove();
+								$(input).next().html('<i class="glyphicon glyphicon-remove text-danger"></i>');
+								
+							}
+						}
+					});
+					
+				})
+			});		
+	})
+	</script>

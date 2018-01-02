@@ -1,0 +1,47 @@
+<button type="button" class="btn btn-primary ajax-get-sub-page" url="{:url('typeadd')}")><span class="fa fa-database"></span> 添加物料类别</button>
+<button type="button" class="btn btn-primary ajax-get-sub-page" url="{:url('typelst')}")><span class="fa fa-database"></span> 物料类别列表</button>
+<hr />
+<div id="content-sub">
+
+
+
+	<form role="form"  class="my-row-no-check" check="{:url('upload')}" action="{:url('typeupdhanddle')}" jumpUrl="{:url('typelst')}">
+		<input type="hidden" value="{$detail_info.type_id}" name="type_id" class="up" />
+		<div class="form-group " >
+			<div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+				<div class="dropdown my-drop">
+					<button type="button" class="btn dropdown-toggle btn-block drop-btn" id="dropdownMenu1" data-toggle="dropdown">
+						所属类别
+						<span class="caret"></span>
+					</button>
+
+					<input type="hidden" class="drop-val up" name="type_pid" value="{$detail_info.type_pid}"/>
+
+					<ul class="dropdown-menu drop-ul" role="menu" aria-labelledby="dropdownMenu1">
+						{volist name="mydata" id="vo"}
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1"  id="{$vo.type_id}" href="#">{$vo.str}{$vo.type_name}</a>
+						</li>
+						{/volist}
+					</ul>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="form-group my-over-hidden" >
+			<div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+				<span class="input-group-addon">物料类别名</span>
+				<input type="text" class="form-control check up" name="type_name" value="{$detail_info.type_name}" placeholder="点击输入。。。" >
+				<span class="input-group-addon"><i class="glyphicon" ></i></span>
+			</div>
+		</div>
+		
+		  <div class="form-group my-over-hidden" >
+			  			<div class="col-lg-push-4 col-md-push-4 col-lg-4 col-md-4 ">
+					  	<span   class="btn btn-success btn-block btn-submit-no-check" jumpUrl="{:url('typelst')}" class="up-info">修改类别</span>
+			      </div>
+		  </div>
+		  
+		</form>
+</div>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>福妙堂的分享</title>
+    <style>
+    *{padding: 0; margin: 0;}
+    body{ padding: 0; margin: 0; font-family:"Microsoft YaHei";}
+	.xqbox{ padding:12px; background:#fff; overflow:hidden;}
+	.xqbox h1{margin: center; font-size:16px; font-weight:600; margin:3px 0 8px; line-height:24px;}
+	.xqbox .info{ color:#999; font-size:13px; height:24px; overflow:hidden; margin-bottom:3px;}
+	.xqcon{ line-height:24px; word-break: break-all; word-wrap:break-word; font-size:13px; color:#666; border-top:1px solid #eee; padding-top: 3px;}
+	.xqcon p{ padding:5px 0 0; font-size:13px; overflow:hidden;}
+	.xqcon img{ width:100%;}
+    </style>
+</head>
+<body>
+<div class="content">
+  <div class="xqbox">
+  
+    <div class="xqcon">
+    
+      <video  width="100%" poster="{$detail.video_preview}" preload="none" controls networkState>
+			<source src="{$detail.video_url}" 	type="video/mp4" />
+	  </video> 
+      
+    </div>
+  </div>
+  <!-- xqbox end -->
+</div>
+<!-- content end -->
+</body>
+</html>

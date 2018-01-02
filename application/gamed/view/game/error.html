@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+ <meta content="yes" name="apple-mobile-web-app-capable">
+ <meta content="black" name="apple-mobile-web-app-status-bar-style">
+ <meta content="telephone=no" name="format-detection">
+ <title>分享有礼</title>
+ <style>
+  *{ margin:0; padding:0; color:#666; font-size:13px;}
+  *,*:after,*:before{-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+  body{ font-family:"Microsoft YaHei"; font-size:13px;margin:0;padding:0;color:#666; background:#fff;}
+  div,h1,h2,h3,h4,h5,p,ul,ol,li,dl,dd,dt,img,form,iframe,textarea{margin:0;padding:0;border:0;}
+  ul,ol,li{list-style:none;}
+  form,tr,th,td,input,select{font-size:12px; outline:none;}
+  input,textarea{font-family:"Microsoft YaHei";}/*text and password*/
+  /*link*/
+  a,textarea{text-decoration:none;color:#555;}
+  a:hover,textarea:hover{text-decoration:none;}
+  .clear {zoom:1;}
+  .clear:after {content:'';display:block;clear:both;height:0px;}
+  .left{ float:left; display:inline;} .right{ float:right; display:inline;}
+
+
+  #shareit{ -webkit-user-select:none; display:none;  position:absolute; width:100%; height:100%; background:rgba(0,0,0,0.85); text-align:center; top:0; left:0; z-index:105;}
+  #shareit .arrow{ width:110px; position:absolute; right:16%; top:8%;}
+  #shareit .arrow2{width:110px; position:absolute; right:28%; top:40%; z-index:9;}
+  #shareit .arrow img,#shareit .arrow2 img{ width:100%;}
+  #shareit .step{ margin-top:58%; font-size:16px; padding:0 30px; position:absolute; z-index:999; width:100%;}
+  #shareit .step p{ color:#ea5b24;}
+  #shareit .step2{ margin-top:2%;}
+  .dkfs{ width:100%; background:#fff; position:absolute; z-index:6; bottom:0px;}
+  .dkfs img{ width:100%!important;}
+ </style>
+ <link rel="stylesheet" type="text/css" href="__GAME__/css/css.css">
+</head>
+<body>
+<div class="hdbox">
+ {include file="public/share"}
+ <div class="bg"><img src="__GAME__/images/bg.jpg" alt="" /></div>
+ <div class="success error">
+  <img src="__GAME__/images/error.png" alt="" />
+  <div class="btn btn-weixin"><a href="#" id="share_btn">{$data}</a></div>
+  <br/><br/>
+  <div class="btn"><a href="{:url('game')}">重新游戏,拿取奖励</a></div>
+ </div>
+ <div class="dbbg"><img src="__GAME__/images/dbbg.png" alt="" /></div>
+</div>
+<!-- share -->
+<div id="shareit">
+ <p class="arrow"><img src="__GAME__/images/share-it.png" alt="" /></p>
+ <div class="step">
+  <p class="step1">第一步：点击更多按钮</p>
+  <p class="step2">第二步：画红色部分是分享对象</p>
+ </div>
+ <p class="arrow2"><img src="__GAME__/images/share-it2.png" alt="" /></p>
+ <p class="dkfs"><img src="__GAME__/images/fxfs.png" alt="" /></p>
+</div>
+<script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
+<script>
+    //立即分享到微信朋友圈点击事件
+    $("#share_btn").on("click", function() {
+        $("#shareit").show();
+    });
+
+
+    $("#shareit").on("click", function(){
+        $("#shareit").hide();
+    })
+</script>
+</body>
+
+</html>
+
+

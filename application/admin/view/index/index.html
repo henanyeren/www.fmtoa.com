@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html style="height: 100%;"> 
+	
+		<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>__TITLE__</title>
+		<link href="__BOOTSTRAP__/css/bootstrap.css"  rel="stylesheet"/>
+		<script src="__BOOTSTRAP__/js/jquery-3.1.1.min.js"></script>
+		<script src="__BOOTSTRAP__/js/bootstrap.min.js"></script>
+		
+		    <script type="text/javascript" charset="utf-8" src="/static/ue/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/ue/ueditor.all.min.js"> </script>
+	
+			
+		<link href="__ADMIN__/css/admin.css" rel="stylesheet" />
+		<link rel="stylesheet" href="/static/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	</head>
+	
+	<body style="height: 100%;">
+	{include file="public/navbar" /}
+				<!--
+                	作者：wobuzhidaoweishenme@hotmail.com
+                	时间：2017-07-13
+                	描述：侧面栏目
+                -->
+	{include file="public/sliderbar" /}
+	
+	<hr />
+	<div id="content" class="col-lg-10 col-md-10 col-sm-8 ">
+			<div class="well well-lg">您好，{:session('admin_name')} ，欢迎使用 <span class="text-success h3">福妙堂办公系统！</span></div>
+			
+			<div class="well well-lg">
+					<div class="list-group">
+					    <a href="#" class="list-group-item active">
+					        <h4 class="list-group-item-heading">
+					            	您的未处理邮件 ( 点击下面查看详情 )
+					        </h4>
+					    </a>
+					    
+					    {volist name="email_info" id="vo"}
+						    <a  class="list-group-item ajax-get-page" url="{:url('Email/myEmails')}" >
+						        <h4 class="list-group-item-heading">
+						            {$vo.email_title}
+						        </h4>
+						            
+						    </a>
+						{/volist}
+					</div>
+			</div>
+			<!--
+            	作者：wobuzhidaoweishenme@hotmail.com
+            	时间：2017-11-04
+            	描述：canvas特效
+            -->
+
+				<div id="zzsc" style="position: absolute; margin-bottom: 10px; margin-right: 10px;"></div>
+					<div style="text-align:center;clear:both;margin-top:20px">
+				</div> 
+				
+	</div>
+	
+
+	<hr />
+	
+			<script id="public-remark" type="text/plain" class="col-lg-10 col-md-10 col-sm-8 "  style=" position: absolute; display: none; right: 30px; bottom: 0; height: 250px; margin: 0 auto;" ></script>
+			<!--<button class="btn btn-success" id="public-hide-ue">隐藏</button>
+			<script>
+				$(document).on('click','#public-hide-ue',function(){
+					$('#public-remark').slideUp(500);	
+				})
+			</script>-->
+			<script>
+			var ue_detail;
+			$(function(){
+				UE.delEditor('public-remark'); 
+				ue_detail = UE.getEditor('public-remark');
+				
+				ue_detail.addListener('blur',function(){
+			       $("#public_remark_input").val(ue_detail.getContent());
+				})
+			})
+			</script>	
+			
+	
+
+	  
+					<!-- 模态框（Modal） -->
+<div class="modal fade text-center"  id="publicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  style="display: inline-block; width: auto;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalTitle"></h4>
+            </div>
+            <div class="modal-body" id="publicModalDetail">
+            </div>
+            <div class="modal-footer">
+            	 <button type="button" class="btn btn-success" onclick="print_table()">打印</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<style type="text/css">
+#colorfulPulse {
+    width: 100px;
+    height: 80px;
+    margin: 0 auto;
+    position: fixed;
+    left: -50px;
+    margin-left: 50%;
+    top: -41px;
+    margin-top: 30%;
+    z-index: 999;
+}
+
+#colorfulPulse span {
+  display: inline-block;
+  width: 10px;
+  height: 40px;
+  animation-name: scale;
+  -webkit-animation-name: scale;
+  -moz-animation-name: scale;
+  -ms-animation-name: scale;
+  -o-animation-name: scale;
+  animation-duration: 1.2s;
+  -webkit-animation-duration: 1.2s;
+  -moz-animation-duration: 1.2s;
+  -ms-animation-duration: 1.2s;
+  -o-animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+}
+span.item-1 {
+  background: #2ecc71;
+}
+span.item-2 {
+  background: #3498db;
+}
+span.item-3 {
+  background: #9b59b6;
+}
+span.item-4 {
+  background: #e67e22;
+}
+span.item-5 {
+  background: #c0392b;
+}
+span.item-6 {
+  background: #e74c3c;
+}
+span.item-7 {
+  background: #e74c8c;
+}
+
+.item-1 {
+  animation-delay: -1s;
+  -webkit-animation-delay: -1s;
+  -moz-animation-delay: -1s;
+  -ms-animation-delay: -1s;
+  -o-animation-delay: -1s;
+}
+
+.item-2 {
+  animation-delay: -0.9s;
+  -webkit-animation-delay: -0.9s;
+  -moz-animation-delay: -0.9s;
+  -ms-animation-delay: -0.9s;
+  -o-animation-delay: -0.9s;
+}
+
+.item-3 {
+  animation-delay: -0.8s;
+  -webkit-animation-delay: -0.8s;
+  -moz-animation-delay: -0.8s;
+  -ms-animation-delay: -0.8s;
+  -o-animation-delay: -0.8s;
+}
+
+.item-4 {
+  animation-delay: -0.7s;
+  -webkit-animation-delay: -0.7s;
+  -moz-animation-delay: -0.7s;
+  -ms-animation-delay: -0.7s;
+  -o-animation-delay: -0.7s;
+}
+
+.item-5 {
+  animation-delay: -0.6s;
+  -webkit-animation-delay: -0.6s;
+  -moz-animation-delay: -0.6s;
+  -ms-animation-delay: -0.6s;
+  -o-animation-delay: -0.6s;
+}
+
+.item-6 {
+  animation-delay: -0.5s;
+  -webkit-animation-delay: -0.5s;
+  -moz-animation-delay: -0.5s;
+  -ms-animation-delay: -0.5s;
+  -o-animation-delay: -0.5s;
+}
+
+.item-7 {
+  animation-delay: -0.4s;
+  -webkit-animation-delay: -0.4s;
+  -moz-animation-delay: -0.4s;
+  -ms-animation-delay: -0.4s;
+  -o-animation-delay: -0.4s;
+}
+
+@-webkit-keyframes scale {
+  0%, 40%, 100% {
+    -moz-transform: scaleY(0.2);
+    -ms-transform: scaleY(0.2);
+    -o-transform: scaleY(0.2);
+    -webkit-transform: scaleY(0.2);
+    transform: scaleY(0.2);
+  }
+
+  20%, 60% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@-moz-keyframes scale {
+  0%, 40%, 100% {
+    -moz-transform: scaleY(0.2);
+    -ms-transform: scaleY(0.2);
+    -o-transform: scaleY(0.2);
+    -webkit-transform: scaleY(0.2);
+    transform: scaleY(0.2);
+  }
+
+  20%, 60% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@-ms-keyframes scale {
+  0%, 40%, 100% {
+    -moz-transform: scaleY(0.2);
+    -ms-transform: scaleY(0.2);
+    -o-transform: scaleY(0.2);
+    -webkit-transform: scaleY(0.2);
+    transform: scaleY(0.2);
+  }
+
+  20%, 60% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@keyframes scale {
+  0%, 40%, 100% {
+    -moz-transform: scaleY(0.2);
+    -ms-transform: scaleY(0.2);
+    -o-transform: scaleY(0.2);
+    -webkit-transform: scaleY(0.2);
+    transform: scaleY(0.2);
+  }
+
+  20%, 60% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+#colorfulPulse span{
+	border-radius: 6px;
+	height: 100px;
+}
+#load_mask{
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background: rgb(0,0,0);
+	opacity: .5;
+	z-index: 998;
+}
+</style>
+
+<!--colorful pulse-->
+<div id="load_mask" style="display: none;"></div>
+<div id="colorfulPulse" style="display: none;">
+  <span class="item-1"></span>
+  <span class="item-2"></span>
+  <span class="item-3"></span>
+  <span class="item-4"></span>
+  <span class="item-5"></span>
+  <span class="item-6"></span>
+  <span class="item-7"></span>
+</div>
+	</body>
+</html>
+<!--<script src="__ADMIN__/js/ajaxPage.js"></script>-->
+<script src="__ADMIN__/js/xiao.js"></script>
+<script src="__ADMIN__/js/niu.js"></script>
+
+<script>
+$(function(){
+$('#zzsc').html('<canvas id="canvas"></canvas>');
+var WINDOW_WIDTH = 520;
+		var WINDOW_HEIGHT = 150;
+		var RADIUS = 5; //球半径
+		var NUMBER_GAP = 8; //数字之间的间隙
+		var u=0.65; //碰撞能量损耗系数
+		var context; //Canvas绘制上下文
+		var balls = []; //存储彩色的小球
+		const colors = ["#33B5E5","#0099CC","#AA66CC","#9933CC","#99CC00","#669900","#FFBB33","#FF8800","#FF4444","#CC0000"]; //彩色小球的颜色
+		var currentNums = []; //屏幕显示的8个字符
+		var digit =
+                [
+                    [
+                        [0,0,1,1,1,0,0],
+                        [0,1,1,0,1,1,0],
+                        [1,1,0,0,0,1,1],
+                        [1,1,0,0,0,1,1],
+                        [1,1,0,0,0,1,1],
+                        [1,1,0,0,0,1,1],
+                        [1,1,0,0,0,1,1],
+                        [1,1,0,0,0,1,1],
+                        [0,1,1,0,1,1,0],
+                        [0,0,1,1,1,0,0]
+                    ],//0
+                    [
+                        [0,0,0,1,1,0,0],
+                        [0,1,1,1,1,0,0],
+                        [0,0,0,1,1,0,0],
+                        [0,0,0,1,1,0,0],
+                        [0,0,0,1,1,0,0],
+                        [0,0,0,1,1,0,0],
+                        [0,0,0,1,1,0,0],
+                        [0,0,0,1,1,0,0],
+                        [0,0,0,1,1,0,0],
+                        [1,1,1,1,1,1,1]
+                    ],//1
+                    [
+                        [0,1,1,1,1,1,0],
+                        [1,1,0,0,0,1,1],
+                        [0,0,0,0,0,1,1],
+                        [0,0,0,0,1,1,0],
+                        [0,0,0,1,1,0,0],
+                        [0,0,1,1,0,0,0],
+                        [0,1,1,0,0,0,0],
+                        [1,1,0,0,0,0,0],
+                        [1,1,0,0,0,1,1],
+                        [1,1,1,1,1,1,1]
+                    ],//2
+                    [
+                        [1,1,1,1,1,1,1],
+                        [0,0,0,0,0,1,1],
+                        [0,0,0,0,1,1,0],
+                        [0,0,0,1,1,0,0],
+                        [0,0,1,1,1,0,0],
+                        [0,0,0,0,1,1,0],
+                        [0,0,0,0,0,1,1],
+                        [0,0,0,0,0,1,1],
+                        [1,1,0,0,0,1,1],
+                        [0,1,1,1,1,1,0]
+                    ],//3
+                    [
+                        [0,0,0,0,1,1,0],
+                        [0,0,0,1,1,1,0],
+                        [0,0,1,1,1,1,0],
+                        [0,1,1,0,1,1,0],
+                        [1,1,0,0,1,1,0],
+                        [1,1,1,1,1,1,1],
+                        [0,0,0,0,1,1,0],
+                        [0,0,0,0,1,1,0],
+                        [0,0,0,0,1,1,0],
+                        [0,0,0,1,1,1,1]
+                    ],//4
+                    [
+                        [1,1,1,1,1,1,1],
+                        [1,1,0,0,0,0,0],
+                        [1,1,0,0,0,0,0],
+                        [1,1,1,1,1,1,0],
+                        [0,0,0,0,0,1,1],
+                        [0,0,0,0,0,1,1],
+                        [0,0,0,0,0,1,1],
+                        [0,0,0,0,0,1,1],
+                        [1,1,0,0,0,1,1],
+                        [0,1,1,1,1,1,0]
+                    ],//5
+                    [
+                        [0,0,0,0,1,1,0],
+                        [0,0,1,1,0,0,0],
+                        [0,1,1,0,0,0,0],
+                        [1,1,0,0,0,0,0],
+                        [1,1,0,1,1,1,0],
+                        [1,1,0,0,0,1,1],
+                        [1,1,0,0,0,1,1],
+                        [1,1,0,0,0,1,1],
+                        [1,1,0,0,0,1,1],
+                        [0,1,1,1,1,1,0]
+                    ],//6
+                    [
+                        [1,1,1,1,1,1,1],
+                        [1,1,0,0,0,1,1],
+                        [0,0,0,0,1,1,0],
+                        [0,0,0,0,1,1,0],
+                        [0,0,0,1,1,0,0],
+                        [0,0,0,1,1,0,0],
+                        [0,0,1,1,0,0,0],
+                        [0,0,1,1,0,0,0],
+                        [0,0,1,1,0,0,0],
+                        [0,0,1,1,0,0,0]
+                    ],//7
+                    [
+                        [0,1,1,1,1,1,0],
+                        [1,1,0,0,0,1,1],
+                        [1,1,0,0,0,1,1],
+                        [1,1,0,0,0,1,1],
+                        [0,1,1,1,1,1,0],
+                        [1,1,0,0,0,1,1],
+                        [1,1,0,0,0,1,1],
+                        [1,1,0,0,0,1,1],
+                        [1,1,0,0,0,1,1],
+                        [0,1,1,1,1,1,0]
+                    ],//8
+                    [
+                        [0,1,1,1,1,1,0],
+                        [1,1,0,0,0,1,1],
+                        [1,1,0,0,0,1,1],
+                        [1,1,0,0,0,1,1],
+                        [0,1,1,1,0,1,1],
+                        [0,0,0,0,0,1,1],
+                        [0,0,0,0,0,1,1],
+                        [0,0,0,0,1,1,0],
+                        [0,0,0,1,1,0,0],
+                        [0,1,1,0,0,0,0]
+                    ],//9
+                    [
+                        [0,0,0,0],
+                        [0,0,0,0],
+                        [0,1,1,0],
+                        [0,1,1,0],
+                        [0,0,0,0],
+                        [0,0,0,0],
+                        [0,1,1,0],
+                        [0,1,1,0],
+                        [0,0,0,0],
+                        [0,0,0,0]
+                    ]//:
+                ];
+
+		function drawDatetime(cxt){
+			var nums = [];
+
+			context.fillStyle="#005eac"
+			var date = new Date();
+			var offsetX = 0, offsetY = 0;
+			var hours = date.getHours();
+			var num1 = Math.floor(hours/10);
+			var num2 = hours%10;
+			nums.push({num: num1});
+			nums.push({num: num2});
+			nums.push({num: 10}); //冒号
+			var minutes = date.getMinutes();
+			var num1 = Math.floor(minutes/10);
+			var num2 = minutes%10;
+			nums.push({num: num1});
+			nums.push({num: num2});
+			nums.push({num: 10}); //冒号
+			var seconds = date.getSeconds();
+			var num1 = Math.floor(seconds/10);
+			var num2 = seconds%10;
+			nums.push({num: num1});
+			nums.push({num: num2});
+
+			for(var x = 0;x<nums.length;x++){
+				nums[x].offsetX = offsetX;
+				offsetX = drawSingleNumber(offsetX,offsetY, nums[x].num,cxt);
+				//两个数字连一块，应该间隔一些距离
+				if(x<nums.length-1){
+					if((nums[x].num!=10) &&(nums[x+1].num!=10)){
+						offsetX+=NUMBER_GAP;
+					}
+				}
+			}
+
+			//说明这是初始化
+			if(currentNums.length ==0){
+				currentNums = nums;
+			}else{
+				//进行比较
+				for(var index = 0;index<currentNums.length;index++){
+					if(currentNums[index].num!=nums[index].num){
+						//不一样时，添加彩色小球
+						addBalls(nums[index]);
+						currentNums[index].num=nums[index].num;
+					}
+				}
+			}
+			renderBalls(cxt);
+			updateBalls();
+
+			return date;
+		}
+
+		function addBalls (item) {
+			var num = item.num;
+			var numMatrix = digit[num];
+			for(var y = 0;y<numMatrix.length;y++){
+				for(var x = 0;x<numMatrix[y].length;x++){
+					if(numMatrix[y][x]==1){
+						var ball={
+							offsetX:item.offsetX+RADIUS+RADIUS*2*x,
+							offsetY:30+RADIUS+RADIUS*2*y,
+							color:colors[Math.floor(Math.random()*colors.length)],
+							g:1.5+Math.random(),
+							vx:Math.pow(-1, Math.ceil(Math.random()*10))*4+Math.random(),
+							vy:-5
+						}
+						balls.push(ball);
+					}
+				}
+			}
+		}
+
+		function renderBalls(cxt){
+			for(var index = 0;index<balls.length;index++){
+				cxt.beginPath();
+				cxt.fillStyle=balls[index].color;
+				cxt.arc(balls[index].offsetX, balls[index].offsetY, RADIUS, 0, 2*Math.PI);
+				cxt.fill();
+			}
+		}
+
+		function updateBalls () {
+			var i =0;
+			for(var index = 0;index<balls.length;index++){
+				var ball = balls[index];
+				ball.offsetX += ball.vx;
+				ball.offsetY += ball.vy;
+				ball.vy+=ball.g;
+				if(ball.offsetY > (WINDOW_HEIGHT-RADIUS)){
+					ball.offsetY= WINDOW_HEIGHT-RADIUS;
+					ball.vy=-ball.vy*u;
+				}
+				if(ball.offsetX>RADIUS&&ball.offsetX<(WINDOW_WIDTH-RADIUS)){
+
+					balls[i]=balls[index];
+					i++;
+				}
+			}
+			//去除出边界的球
+			for(;i<balls.length;i++){
+				balls.pop();
+			}
+		}
+		function drawSingleNumber(offsetX, offsetY, num, cxt){
+			var numMatrix = digit[num];
+			for(var y = 0;y<numMatrix.length;y++){
+				for(var x = 0;x<numMatrix[y].length;x++){
+					if(numMatrix[y][x]==1){
+						cxt.beginPath();
+						cxt.arc(offsetX+RADIUS+RADIUS*2*x,offsetY+RADIUS+RADIUS*2*y,RADIUS,0,2*Math.PI);
+						cxt.fill();
+					}
+				}
+			}
+			cxt.beginPath();
+			offsetX += numMatrix[0].length*RADIUS*2;
+			return offsetX;
+		}
+
+		var canvas = document.getElementById("canvas");
+		canvas.width=WINDOW_WIDTH;
+		canvas.height=WINDOW_HEIGHT;
+		context = canvas.getContext("2d");
+
+		//记录当前绘制的时刻
+		var currentDate = new Date();
+
+		setInterval(function(){
+			//清空整个Canvas，重新绘制内容
+			context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+			drawDatetime(context);
+		}, 50)
+});
+</script>

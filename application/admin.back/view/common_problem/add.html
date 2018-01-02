@@ -1,0 +1,79 @@
+
+<form role="form"  class="my-row" check="{:url('upload')}"  action="{:url('add')}" jumpUrl="{:url('lst')}">
+
+	<div class="form-group my-over-hidden" >
+		<div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+			<span class="input-group-addon">问题</span>
+			<input type="text" class="form-control check up" name="problem_name" placeholder="点击输入。。。" >
+			<span class="input-group-addon"><i class="glyphicon" ></i></span>
+		</div>
+	</div>
+	<div class="form-group my-over-hidden" >
+         <input type="hidden" name="problem_content" class="up" id="cancer_content"/>
+       <script type="text/plain" id="myEditor" style="width:100%;height:240px;">
+                <p>这里我可以写一些输入提示</p>
+            </script>
+         <script id="editor" type="text/plain" style="width:100%;height:240px;"></script>
+
+         <script>
+         $(function(){
+
+
+             UE.delEditor('editor');
+             var ue = UE.getEditor('editor');
+             ue.addListener('blur',function(){
+                 $("#cancer_content").val(ue.getContent());
+             })
+         })
+         </script>
+
+     </div>
+
+
+
+
+	<div class="form-group my-over-hidden" >
+		<div class="col-lg-push-4 col-md-push-4 col-lg-4 col-md-4 ">
+			<span   class="btn btn-success btn-block btn-submit" class="up-info">提交 </span>
+		</div>
+	</div>
+
+
+</form>
+
+
+
+
+<script>
+    //初始化绑定指定的事件
+    $(function(){
+        var inputs=$('.my-row input.check');
+
+        $.each(inputs, function(index,input) {
+            $(input).blur(function(){
+                submit[index]=1;
+                //获取对应的键值
+                var mykey=$(input).attr('name');
+                var myjson={[mykey]:$(input).val()};
+                $.ajax({
+                    type:"post",
+                    data:myjson,
+                    url:$('.my-row').attr('check'),
+                    success:function(data){
+                        if(data.state==1){
+
+                            $(input).next().children().remove();
+                            $(input).next().html('<i class="glyphicon glyphicon-ok text-success"></i>');
+                            submit[index]=1;
+                        }else{
+                            $(input).next().children().remove();
+                            $(input).next().html('<i class="glyphicon glyphicon-remove text-danger"></i>');
+
+                        }
+                    }
+                });
+
+            })
+        });
+    })
+</script>

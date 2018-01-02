@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="__ADMIN__/css/table.css" rel="stylesheet" />
+</head>
+
+<body>
+	
+	
+<div class="tablebox">
+ <div class="phxx">
+  <h1>{$detail.distribution_info_name}</h1>
+  <div class="phtop">
+   <div class="row">
+    <p class="left"><label>送货单位：</label><span><input name="" disabled value="{$detail.distribution_delivery_unit}" type="text"></span></p>
+	<p class="right"><label>NO.</label><span><input name=""  disabled value="{$detail.distribution_id}" type="text"></span></p>
+   </div>
+   <div class="row">
+    <p class="left"><label>收货单位：</label><span><input name=""  disabled value="{$detail.distribution_consignee}" type="text"></span></p>
+	<p class="right"><label>送货日期：</label><span><input name=""  disabled value="{$detail.distribution_delivery_date}" type="text"></span></p>
+   </div>
+  </div>
+  <!-- phtop end -->
+  <div class="table_nr">
+   <table width="100%" border="1">
+  <tr>
+    <td width="60">序号</td>
+    <td width="200">产品名称</td>
+    <td width="120">生产批号</td>
+    <td width="100">规格</td>
+    <td width="80">单位</td>
+    <td width="80">数量</td>
+    <td width="80">单价</td>
+    <td width="120">总数</td>
+    <td width="80" rowspan="8"><p class="cdtit">二联公司存档</p></td>
+  </tr>
+  
+  {if condition="$detail.sub"}
+  
+	{foreach $detail.sub as $key=>$vo}
+	  <tr>
+	    <td>{$key}</td>
+	    <td><input name="" type="text" disabled value="{$vo.distribution_name_id}"></td>
+	    <td><input name="" type="text" disabled value="{$vo.distribution_lot_number}"></td>
+	    <td><input name="" type="text" disabled value="{$vo.distribution_format}"></td>
+	    <td><input name="" type="text" disabled value="{$vo.distribution_unit}"></td>
+	    <td><input name="" type="number" disabled value="{$vo.distribution_goods_number}"></td>
+	    <td><input name="" type="number" disabled value="{$vo.distribution_univalent}"></td>
+	    <td><input name="" type="number" disabled value="{$vo.distribution_total}"></td>
+	  </tr>
+	{/foreach}
+
+  {/if}
+
+  <tr>
+    <td colspan="7"><p class="hj"><label>合计（人民币大写）：</label><span><input name="" type="text"></span></p></td>
+    <td><input name="" type="number"></td>
+  </tr>
+  <tr>
+    <td>备注</td>
+    <td colspan="8"><textarea name="" cols="" rows="" style="text-align:left;">{$detail.distribution_text}</textarea></td>
+  </tr>
+</table>
+ <div class="phbot">
+  <p><label>客户签收：</label><span><textarea name="" cols="" rows="">{$detail.distribution_customer_signe}</textarea></span></p>
+  <p><label>制单：</label><span><textarea name="" cols="" rows="">{$detail.distribution_touching}</textarea></span></p>
+  <p><label>送货人/电话：</label><span><textarea name="" cols="" rows="">{$detail.distribution_delivery_call} </textarea></span></p>
+ </div>
+  </div>
+  <!-- table_nr end -->
+  
+ </div>
+</div>
+
+
+</body>
+</html>

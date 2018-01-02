@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>无标题文档</title>
+	<style>
+		*{ padding:0; margin:0;}
+		body{padding:0; margin:0;font-family: "microsoft yahei";}
+		img{ border:none;}
+		ul,li{ list-style:none;}
+		.left{ float:left; display:inline;}
+		.right{ float:right; display:inline;}
+		.wlqg{ width:1200px; margin:0 auto;}
+		table{border-collapse:collapse;}
+		.clear {zoom:1;}
+		.clear:after {content:'';display:block;clear:both;height:0px;}
+		.ddtop{}
+		.wlqg table {width:100%; border:1px solid #ddd; border-collapse:collapse; margin:12px auto; word-break:break-all;}
+		.wlqg table td {border:1px solid #ddd; border-collapse:collapse; padding:5px; color:#666; text-align:center;}
+		.wlqg table td input[type="text"]{ width:100%; border:none; outline:none; text-align:center; font-size:13px;}
+		.wlqg h1{ font-size:22px; font-weight:normal; text-align:center; line-height:50px;}
+		.wlqg table td .add,.wlqg table td .del{ margin:0 5px; cursor:pointer;}
+		.qltit{ clear:both; height:25px;}
+		.qltit li{ width:33.33%; float:left; height:25px; line-height:25px;}
+		.qltit li label{ float:left;}
+		.qltit li span{ width:65%; float:left;}
+		.qltit li span input[type="text"]{ width:100%; border:none;  outline:none; text-align:left; height:25px; line-height:25px; font-size:13px;border-bottom:1px solid #ddd!important;}
+		.wlqg table thead{ background:#eee;}
+	</style>
+</head>
+
+<body>
+<div class="wlqg">
+	<h1>质检报告</h1>
+	<ul class="qltit">
+		<li><label>检验人：</label><span><input readonly="readonly" value="{$mylist.discipline_name}"  type="text" /></span></li>
+		<li><label>产品来源：</label><span><input readonly="readonly" value="{$mylist.discipline_source}" type="text" /></span></li>
+		<li><label>日期：</label><span><input readonly="readonly" value="{$mylist.discipline_time|date="Y-m-d H:i:s",###}" type="text" /></span></li>
+	</ul>
+	<table>
+		<thead>
+		<tr>
+
+			<td width="8%">编号</td>
+			<td width="8%">规格</td>
+			<td width="8%">重量/数量</td>
+			<td width="8%">单位</td>
+			<td width="10%">时间</td>
+			<td>照片</td>
+			<td width="20%">备注</td>
+		</tr>
+		</thead>
+		<tbody>
+		{volist name="list" id="vo"}
+		<tr>
+			<td><input readonly="readonly" value="{$vo.discipline_goods_number}" type="text" /></td>
+			<td><input readonly="readonly" value="{$vo.discipline_goods_unit}" type="text" /></td>
+			<td><input readonly="readonly" value="{$vo.discipline_goods_weight}" type="text" /></td>
+			<td><input readonly="readonly" value="{$vo.discipline_goods_size}" type="text" /></td>
+			<td><input readonly="readonly" value="{$vo.discipline_goods_time|date="Y-m-d H:i:s",###}" type="text" /></td>
+			<td>
+				{volist name="$vo.discipline_goods_img" id="vos"}
+				{if condition="$vos"}
+				<a target="_blank" href="__ROOT__/discipline/{$vos}"><img src="__ROOT__/discipline/{$vos}" width="100px" height="100px"></a> &nbsp;&nbsp;
+				{else/}
+				未上传图片
+				{/if}
+				{/volist}
+			</td>
+
+			<td><input readonly="readonly" value="{$vo.discipline_goods_content}" type="text" /></td>
+
+		</tr>
+		{/volist}
+		</tbody>
+	</table>
+	<ul class="qltit" >
+		<li><label>检验编号：</label><span><input readonly="readonly" value="{$mylist.discipline_number}" type="text" /></span></li>
+		<li><label>备注：</label><span><input readonly="readonly" value="{$mylist.discipline_content}" type="text" /></span></li>
+	</ul>
+</div>
+</body>
+</html>

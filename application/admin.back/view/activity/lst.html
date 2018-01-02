@@ -1,0 +1,65 @@
+		<table class="table table-striped table-responsive table-bordered table-hover">
+					<caption><span class="glyphicon glyphicon-th"></span> 文件管理</caption>
+					<thead>
+						<tr>
+					
+							
+							<th>ID</th>
+						    <th>文件描述</th>
+							<th>时间</th>
+							<th>操作</th>
+						</tr>	
+					</thead>
+					
+					<tbody>
+
+						
+						{volist name="myfinance" id="vo"}
+						
+						<tr id="tr{$vo.id}">
+							<td>{$vo.id}</td>
+							<td>{$vo.name}</td>
+							<td>{$vo.time|date="Y-m-d H:i:s",###}</td>
+							<td>
+								<span   class="glyphicon  glyphicon-edit text-info my-click-span ajax-get-page"  url="{:url('upd')}" id="{$vo.id}"></span>
+								<span   class="glyphicon glyphicon-plus-sign text-success my-click-span ajax-get-page" url="{:url('imgadd')}" id="{$vo.id}"></span>
+									　　<span   class="glyphicon glyphicon-remove text-danger my-click-span " 
+										data-toggle="modal" data-target="#myModal{$vo.id}"
+										></span>
+
+
+								<span   class="glyphicon glyphicon-eye-open text-danger my-click-span get-detail" data-toggle="modal" url="{:url('detail')}" myId="{$vo.id}"
+								></span>
+										<div class="modal fade" id="myModal{$vo.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										    <div class="modal-dialog">
+										        <div class="modal-content">
+										            <div class="modal-header">
+										                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										                <h4 class="modal-title" id="myModalLabel">提示</h4>
+										            </div>
+										            <div class="modal-body">确定要删除吗？这将不可恢复！</div>
+										            <div class="modal-footer">
+										                <button type="button" class="btn btn-success" data-dismiss="modal">取消</button>
+															<span type="button" url="{:url('del')}" name="id" class="btn btn-danger ajax-del" id="{$vo.id}" jumpUrl="{:url('lst')}">确定删除</span>
+										            </div>
+										        </div><!-- /.modal-content -->
+										    </div><!-- /.modal -->
+										</div>
+										
+							</td>
+						</tr>
+						{/volist}
+					
+						
+					</tbody>
+					
+					
+					
+				</table>
+				<!--
+                	作者：wobuzhidaoweishenme@hotmail.com
+                	时间：2017-07-26
+                	描述：模态提示
+                -->
+
+

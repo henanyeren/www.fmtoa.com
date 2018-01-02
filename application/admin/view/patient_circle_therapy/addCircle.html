@@ -1,0 +1,42 @@
+
+
+	<form role="form"  class="my-row-no-check" check="{:url('checkAjax')}" action="{:url('addCircle')}" jumpUrl="{:url('lst')}">
+		  <input type="hidden" name="patiend_id" class="up" value="{$patiend_id}"/>
+		  <div class="form-group my-over-hidden" >
+			       <div class="input-group col-lg-push-4 col-md-push-4 col-lg-4 col-md-4">
+					  <span class="input-group-addon">圈疗名称</span>
+					  <input type="text" class="form-control check up" name="circle_name" placeholder="点击输入。。。" >
+					  <span class="input-group-addon"><i class="glyphicon" ></i></span>
+					</div>
+		  </div>
+
+
+		
+		  <div class="form-group my-over-hidden" >
+		  	<input type="hidden" name="circle_content" class="up" id="cancer_content"/>
+
+						<script id="editor" type="text/plain" style="width:100%;height:240px;"></script>
+
+							<script>
+								$(function(){
+									UE.delEditor('editor'); 
+									var ue = UE.getEditor('editor');
+									ue.addListener('blur',function(){
+								       $("#cancer_content").val(ue.getContent());
+									})
+								})
+							</script>
+						
+		  </div>
+		  
+			
+			
+			
+		  <div class="form-group my-over-hidden" >
+			  			<div class="col-lg-push-4 col-md-push-4 col-lg-4 col-md-4 ">
+					  	<span   class="btn btn-success btn-block btn-submit-no-check" class="up-info">添加圈疗 </span>
+			      </div>
+		  </div>
+		  
+		</form>
+	<script>
